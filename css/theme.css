@@ -114,10 +114,12 @@ html {
 	color: #78828D
 }
 
+
+
 body {
   margin: 0;
-  padding-top:70px;
-  padding-bottom: 30px;
+  padding-top:0.5%;
+  padding-bottom: 0.5%;
 
 }
 article,
@@ -3328,8 +3330,8 @@ fieldset[disabled] .btn-success.focus {
   color: #ffffff;
   background-color: #4d3a7d;
   border-color: #4d3a7d;
-  margin-top: -50px;
-  margin-left: -50px
+  /*margin-top: -50px;
+  margin-left: -50px*/
 }
 .btn-info:focus,
 .btn-info.focus {
@@ -5077,15 +5079,15 @@ a.badge:focus {
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 1%;
+    padding-bottom: 1%;
 	padding-left:0px;
 	padding-right: 0px;
   }
   .container .jumbotron,
   .container-fluid .jumbotron {
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 1%px;
+    padding-right: 1%px;
   }
   .jumbotron h1,
   .jumbotron .h1 {
@@ -5953,6 +5955,8 @@ button.close {
 .modal {
   display: none;
   overflow: hidden;
+  padding: 0!important;
+  text-align:center;
   position: fixed;
   top: 0;
   right: 0;
@@ -5961,6 +5965,13 @@ button.close {
   z-index: 1050;
   -webkit-overflow-scrolling: touch;
   outline: 0;
+}
+.modal:before{
+	content:'';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right:-4px;
 }
 .modal.fade .modal-dialog {
   -webkit-transform: translate(0, -25%);
@@ -5984,6 +5995,9 @@ button.close {
 }
 .modal-dialog {
   position: relative;
+  text-align: left;
+  vertical-align: middle;
+  display:inline-block;
   width: auto;
   margin: 10px;
 }
@@ -6333,6 +6347,8 @@ button.close {
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   line-height: 1;
+  position: relative; 
+  min-width: 100%; /* TAMANHO DA IMAGEM CARROSSEL CIRILO */
 }
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {
