@@ -1,11 +1,27 @@
 ﻿<?php
 	include_once("conexao.php");
 	$id = $_GET['id'];
+	$user = $_SESSION['usuarioId'];
 	//Executa consulta
 	$result = mysqli_query($conectar,"SELECT * FROM produtos WHERE id = '$id' LIMIT 1");
 	$resultado = mysqli_fetch_assoc($result);
 	$id_produto = $resultado['id'];
+
+	$result2 = mysqli_query($conectar,"SELECT * FROM estoque WHERE id_produto = '$id' LIMIT 1");
+	$resultado2 = mysqli_fetch_assoc($result2);
+	$qtd_produto = $resultado2['qtd_produto'];
 ?>
+
+ <script type="text/javascript"> 
+  	  		function numerico(evt){
+				   
+			   var charCode = (evt.which) ? evt.which : event.keyCode
+			   if (charCode >= 48 && charCode <= 57)
+			        return true;
+			    return false;
+			};
+</script>
+
 <div class="container theme-showcase" role="main">      
   <div class="page-header">
 	<h1>Editar Produto</h1>
@@ -36,40 +52,20 @@
 		  </div>
 		  
 		  <div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Descrição Longa</label>
-			<div class="col-sm-10">
-				<textarea class="form-control ckeditor" rows="5" name="descricao_longa" placeholder="Descrição longa do produto"><?php echo $resultado['descricao_longa']; ?></textarea>
-			</div>
-		  </div>
-		  
-		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Preço</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="preco" placeholder="Preço" value="<?php echo $resultado['preco']; ?>">
+			  <input type="number" min='1' step='0.01' max='10000.00' class="form-control" name="preco" placeholder="<?php echo $resultado['preco']; ?>" value="<?php echo $resultado['preco']; ?>">
 			</div>
 		  </div>
-		  
-		  <div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Tag</label>
+
+
+		    <div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Estoque</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="tag" placeholder="Tag" value="<?php echo $resultado['tag']; ?>">
+			  <input type="number" min='0' onkeypress='return numerico(event)' class="form-control" name="estoque" placeholder="<?php echo $qtd_produto; ?>">
 			</div>
 		  </div>
-		  
-		  <div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Description</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="description" placeholder="Description" value="<?php echo $resultado['description']; ?>">
-			</div>
-		  </div>
-		  
-		  <div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Slug</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="slug" placeholder="Nome do produto tudo minúsculo" value="<?php echo $resultado['slug']; ?>">
-			</div>
-		  </div>
-		  
+
 		  <div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Foto do Produto (500x500)</label>
 				<div class="col-sm-10">
@@ -142,8 +138,12 @@
 				</select>
 			</div>
 		  </div>
-		  
+		  <input class="form-control" type="hidden" name="descricao_longa" value="-">
 		  <input type="hidden" name="id" value="<?php echo $id_produto;?>">
+		  <input type="hidden" name="user" value="<?php echo $user;?>">
+		  <input type="hidden" class="form-control" name="description" placeholder="Description" value="-">
+	  	  <input type="hidden" class="form-control" name="slug" placeholder="Nome do produto minúsculo" value="-">
+	  	  <input type="hidden" class="form-control" name="tag" placeholder="Tag" value="-">
 		  <div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 			  <button type="submit" class="btn btn-success">Editar</button>

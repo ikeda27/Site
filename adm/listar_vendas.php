@@ -2,7 +2,7 @@
 <?php
 	include_once("conexao.php");
 	$cod_clube = 1;
-	$resultado=mysqli_query($conectar,"SELECT u.nome, x.data_venda, x.cod_venda, SUM(x.valor_produto) AS valor_acumulado FROM (SELECT v.*, d.cod_produto, d.qtd_produto, d.valor_produto, d.data_venda FROM vendas AS v INNER JOIN venda_dados AS d ON d.cod_venda = v.cod_venda WHERE v.cod_clube = '$cod_clube') AS x INNER JOIN usuarios AS u ON u.id = x.cod_cliente GROUP BY u.nome, x.data_venda, x.cod_venda");
+	$resultado=mysqli_query($conectar,"SELECT u.nome, x.data_venda, x.cod_venda, SUM(x.valor_produto) AS valor_acumulado, SUM(valor_acum_produto) AS valor_final FROM (SELECT v.*, d.cod_produto, d.qtd_produto, d.valor_produto, d.qtd_produto*d.valor_produto AS valor_acum_produto, d.data_venda FROM vendas AS v INNER JOIN venda_dados AS d ON d.cod_venda = v.cod_venda WHERE v.cod_clube = '$cod_clube') AS x INNER JOIN usuarios AS u ON u.id = x.cod_cliente GROUP BY u.nome, x.data_venda, x.cod_venda");
 	$linhas=mysqli_num_rows($resultado);
 ?>	
 <div class="container theme-showcase" role="main">      
@@ -31,7 +31,7 @@
 					echo "<tr>";
 						echo "<td>".$linhas['cod_venda']."</td>";
 						echo "<td>".$linhas['nome']."</td>";
-						echo "<td>".$linhas['valor_acumulado']."</td>";
+						echo "<td>".number_format($linhas['valor_final'], 2, ',', '.')."</td>";
 						echo "<td>".$linhas['data_venda']."</td>";
 						?>
 						<td> 

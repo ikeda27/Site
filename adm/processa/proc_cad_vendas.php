@@ -24,8 +24,20 @@
 
 	for($i = 0; $i < count($temp_cod_prod); $i++ ){ 
 		$query = mysqli_query($conectar,"INSERT INTO venda_dados (cod_produto, cod_venda, data_venda, qtd_produto, valor_produto) VALUES ('$temp_cod_prod[$i]','$ultima_venda',NOW(), '$temp_qtd_prod[$i]', '$temp_val_prod[$i]')");
+
+		$resultado_est = mysqli_query($conectar, "SELECT qtd_produto FROM estoque WHERE id_produto='$temp_cod_prod[$i]' LIMIT 1");
+		
+		while($dados = mysqli_fetch_assoc($resultado_est)){
+			$qtd_atualizar = $dados['qtd_produto'] - $temp_qtd_prod[$i];
+		}
+		
+		$atualiza_est =mysqli_query($conectar, "UPDATE estoque SET qtd_produto ='$qtd_atualizar' WHERE id_produto='$temp_cod_prod[$i]'");
+
 		$acao = $i+1;
 	}
+
+
+
 
 ?>
 <!DOCTYPE html>

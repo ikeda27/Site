@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();
+//session_start();
 include_once("../seguranca.php");
 include_once("../conexao.php");
 ?>
@@ -12,16 +12,22 @@ include_once("../conexao.php");
 	<?php
 $id 				= $_POST["id"];
 $nome 				= $_POST["nome"];
-$descricao_curta 	= $_POST["descricao_curta"];
-$descricao_longa 	= $_POST["descricao_longa"];
+$descricao_curta 	= strip_tags(trim($_POST["descricao_curta"]));
+$descricao_longa 	= $descricao_curta;
 $preco 				= $_POST["preco"];
 $tag 				= $_POST["tag"];
-$description 		= $_POST["description"];
-$slug		 		= $_POST["slug"];
+$description 		= $descricao_curta;
+$slug		 		= $descricao_curta;
 $arquivo	 		= $_FILES['arquivo']['name'];
 $categoria_id 		= $_POST["categoria_id"];
 $situacao_id 		= $_POST["situacao_id"];
 $img_antiga 		= $_POST["img_antiga"];
+$estoque 			= $_POST["estoque"];
+$user 				= $_POST["user"];
+
+//ATUALIZA QUANTIDADE EM ESTOQUE DO PRODUTO EDITADO
+$resultado =mysqli_query($conectar, "UPDATE estoque SET qtd_produto ='$estoque' WHERE id_produto='$id'");
+
 
 if($arquivo == ""){
 	$query = mysqli_query($conectar,"UPDATE produtos SET
@@ -187,6 +193,7 @@ if($arquivo == ""){
 		}
 	}
 }
+
 		?>
 	</body>
 </html>

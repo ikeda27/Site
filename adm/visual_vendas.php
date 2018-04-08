@@ -37,8 +37,8 @@
 						echo "<td>".$linhas['cod_venda']."</td>";
 						echo "<td>".$linhas['data_venda']."</td>";
 						echo "<td>".$linhas['nome']."</td>";
-						echo "<td>".$linhas['valor_produto']."</td>"; 
-						$valor_final = $valor_final+($linhas['valor_produto']*1);
+						echo "<td>".number_format(($linhas['valor_produto']*1), 2, ',', '.')."</td>"; 
+						$valor_final = $valor_final+(($linhas['valor_produto']*1)*$linhas['qtd_produto']);
 						echo "<td>".$linhas['qtd_produto']."</td>"; 
 						$qtd_final = $qtd_final+($linhas['qtd_produto']*1);
 						
@@ -49,7 +49,7 @@
 					echo "</tr>";
 				}
 				echo "<tr><td>Total do Pedido</td>";
-				echo "<td></td><td></td><td> R$ ".$valor_final."</td><td>".$qtd_final."</td></tr>";
+				echo "<td></td><td></td><td> R$ ".number_format($valor_final, 2, ',', '.')."</td><td>".$qtd_final."</td></tr>";
 			?>
 		</tbody>
 	  </table>

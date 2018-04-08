@@ -110,6 +110,7 @@
 
 
 					function post() {
+					    var erro_qtd_prod = 0;
 					    var form = $('<form></form>');
 
 					    form.attr("method", "post");
@@ -123,17 +124,31 @@
 					    var temp_id = "";
 					    var temp_valor = "";
 					    var temp_qtde = "";
+					    var temp_estoque = "";
 					    var qtde_produto = "";
 					    var valor_produto = "";
+					    var marcados = 0;
 					    for(var i=0, n=ck_marcados.length;i<n;i++) {
-
 					    	if(ck_marcados[i].checked){
+					    		marcados = marcados + 1;
 					    		temp_id = ck_marcados[i].value;
 					    		temp_valor = "preco_id_" + temp_id;
 					    		temp_valor = document.getElementById(temp_valor).innerHTML;
+					    		temp_estoque = "td_estoque_" + temp_id;
+					    		temp_estoque = document.getElementById(temp_estoque).innerHTML;
+					    		//temp_estoque = "est_id_" + temp_id;
+					    		//temp_estoque = document.getElementsByClassName(temp_estoque).innerHTML;
+
+					    		if(temp_estoque == undefined){temp_estoque = 0;}
 					    		temp_qtde = "qtd_id_" + temp_id;
 					    		temp_qtde = document.getElementById(temp_qtde).value;
-					    		
+
+					    		if (temp_qtde > temp_estoque) {
+					    			erro_qtd_prod = 1;
+					    		}
+
+					    		//alert("DEBUG: qtde= "+temp_qtde+" estoque= "+temp_estoque+" qtd > estoque= "+erro_qtd_prod);
+
 					    		if(produtos_id==""){
 					    			produtos_id   = temp_id;
 					    			valor_produto = temp_valor;
@@ -172,9 +187,12 @@
 				        field.attr("value", produtos_id);
 				        form.append(field);
 
-						
-					    $(document.body).append(form);
-					    form.submit();
+						if (erro_qtd_prod == 0 && marcados > 0 && cliente.value > 0){
+					    	$(document.body).append(form);
+					    	form.submit();
+					    }else{
+					    	alert("Revise por favor: Produtos ou cliente sem seleção, quantidade acima do estoque!");
+					    }
 					    
 					};
 
@@ -217,7 +235,7 @@
 					echo "<td id='td_nome'>".$linhas['nome']."</td>";
 					echo "<td id='preco_id_".$linhas['id']."'>".$linhas['preco']."</td>";
 					echo "<td id='td_qtde'> <input type='number' min='0' onkeypress='return numerico(event)' id='qtd_id_".$linhas['id']."' value='0' size='3'> </td>";
-					echo "<td id='td_estoque' class='est_id_".$linhas['id']."'>".$linhas['qtd_produto']."</td>";
+					echo "<td id='td_estoque_".$linhas['id']."' class='est_id_".$linhas['id']."'>".$linhas['qtd_produto']."</td>";
 					echo "<td id='td_categoria'>".$linhas['categoria']."</td>";
 					echo "<td id='td_situacao'>".$linhas['situacao']."</td>";
 					?>

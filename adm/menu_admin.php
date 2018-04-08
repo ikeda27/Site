@@ -33,8 +33,8 @@
 		  <ul class="dropdown-menu">
 			<li><a href="administrativo.php?link=7">Listar Categoria </a></li>
 			<li><a href="administrativo.php?link=10">Listar Produto</a></li>     
-			<li><a href="administrativo.php?link=22">Produto Destaque</a></li> 		
-			<li><a href="administrativo.php?link=23">Destacar Produto </a></li>
+			<!--<li><a href="administrativo.php?link=22">Produto Destaque</a></li> 		
+			<li><a href="administrativo.php?link=23">Destacar Produto </a></li>-->
 		  </ul>
 		</li>
 		<li class="dropdown">
@@ -56,7 +56,8 @@
 		<li class="dropdown">
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vendas <span class="caret"></span></a>
 		  <ul class="dropdown-menu">
-			<li><a href="administrativo.php?link=39">Vender </a></li>    
+			<li><a href="administrativo.php?link=50">Vendas Realizadas</a></li>
+			<li><a href="administrativo.php?link=51">Nova Venda</a></li>
 		  </ul>
 		</li>
 		<li class="dropdown">
