@@ -1,16 +1,24 @@
-﻿
+﻿<?php
+	include_once("conexao.php");
+	$cod_clube=$_SESSION['clube'];
+	//Executa consulta
+	$result = mysqli_query($conectar,"SELECT * FROM planos  WHERE id_clube='$cod_clube'");
+	$resultado = mysqli_fetch_assoc($result);
+?>
+
+
 <div class="container theme-showcase" role="main">      
   <div class="page-header">
 	<h1>Cadastrar Usuário</h1>
   </div>
   <div class="row espaco">
 		<div class="pull-right">
-			<a href='administrativo.php?link=2&id=<?php echo $resultado['id']; ?>'><button type='button' class='btn btn-sm btn-info'>Listar</button></a>				
+			<a href='administrativo.php?link=2'><button type='button' class='btn btn-sm btn-info'>Listar</button></a>				
 		</div>
 	</div>
   <div class="row">
 	<div class="col-md-12">
-	  <form class="form-horizontal" method="POST" action="processa/proc_cad_usuario.php">
+	  <form class="form-horizontal" method="POST" action="processa/proc_cad_usuario.php" name="form_cad_usu">
 	  
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
@@ -60,28 +68,31 @@
 		  <div class="form-group">
 			<label for="inputDocumento" class="col-sm-2 control-label">Documento</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="documento" placeholder="documento">
+			  <input type="text" class="form-control" name="documento" placeholder="CPF" id="cpf">
 			</div>
 		  </div>
 		  
 		  <!-- incluir padrão formatação de telefone -->
 		  <div class="form-group">
-			<label for="inputTelefone" class="col-sm-2 control-label">Telefone</label>
+			<label for="inputTelefone" class="col-sm-2 control-label">Celular</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="telefone" placeholder="Telefone">
+			  <input type="text" class="form-control" name="telefone" placeholder="Celular" id="tel">
 			</div>
 		  </div>
 		  
 		  
 		   <div class="form-group">
-			<label for="inputPassword3" class="col-sm-2 control-label">Plano</label>
+			<label for="nivel_plano" class="col-sm-2 control-label">Plano</label>
 			<div class="col-sm-10">
 			  <select class="form-control" name="nivel_plano">
-				  <option value=1>B&aacute;sico</option>
-				  <option value=2>Bronze</option>
-				  <option value=3>Prata</option>
-				  <option value=4>Ouro</option>
-				  <option value=5>Diamante</option>
+			  <?php
+
+			  while ($resultado = mysqli_fetch_array($result)) {
+			  	
+		  	echo "<option value='".$resultado['id_plano']."'>".$resultado['desc_plano']."</option>";
+		  } 
+
+			  ?>
 				</select>
 			</div>
 		  </div>
@@ -90,20 +101,20 @@
 		  <div class="form-group">
 			<label for="inputSaldo" class="col-sm-2 control-label">Saldo</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="saldo" placeholder="Saldo">
+			  <input type="text" class="form-control" name="saldo" placeholder="Saldo" id="dinheiro">
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputNasc" class="col-sm-2 control-label">Data Nascimento</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="nascimento" placeholder="Nascimento">
+			  <input type="text" class="form-control" name="nascimento" placeholder="Nascimento" id="data">
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-			  <button type="submit" class="btn btn-success">Cadastrar</button>
+			  <button type="submit" onclick="validar_cad_usu();" class="btn btn-success">Cadastrar</button>
 			</div>
 		  </div>
 		</form>

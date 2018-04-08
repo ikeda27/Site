@@ -20,3 +20,13 @@ body {
 .espaco{
 	margin-bottom:15px;
 }
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+body,
+html { height: 100%;}
+.nav .open > a, 
+.nav .open > a:hover, 
+.nav .open > a:focus {background-color: transparent;}

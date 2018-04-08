@@ -18,6 +18,14 @@ include_once("conexao.php");
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/theme.css" rel="stylesheet">
     <script src="js/ie-emulation-modes-warning.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <link href="css/theme.css" rel="stylesheet">
+    <script src="js/jquery_3_1.js"></script>
+    <script src="js/jquery.mask.js"></script>
+    <script src="js/mascaras.js"></script>
+    
+ 
   </head>
 
   <body role="document">
@@ -75,6 +83,7 @@ include_once("conexao.php");
 		$pag[43] = "editar_torneio.php";
 		$pag[44] = "abertura_torneio.php";
 		$pag[45] = "proc_calcula_torneio.php";
+		$pag[46] = "visual_torneio.php";
 		$pag[50] = "listar_vendas.php";
 		$pag[51] = "listar_datatable.php";
 		$pag[52] = "editar_vendas.php";

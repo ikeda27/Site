@@ -1,4 +1,9 @@
 ﻿
+<?php
+	$result = mysqli_query($conectar,"SELECT * FROM vantagens WHERE flag_vantagem_ativo=1 AND id_clube='$cod_clube' ");
+	$resultado = mysqli_num_rows($result);
+?>
+
 <div class="container theme-showcase" role="main">      
   <div class="page-header">
 	<h1>Cadastrar Plano</h1>
@@ -18,49 +23,20 @@
 			  <input type="text" class="form-control" name="nome" placeholder="Nome Completo">
 			</div>
 		  </div>
-		  
+
 		  <!-- CHECKBOX DE OPÇÕES DO PLANO -->
-		  <div class="form-group">
-			<label for="inputck1" class="col-sm-2 control-label">Check1</label>
-			<div class="col-sm-10">
-			  <input type="checkbox" class="form-control" name="ck1" placeholder="ckeck1" value="1">
-			</div>
-		  </div>
-		  
-		  <div class="form-group">
-			<label for="inputck2" class="col-sm-2 control-label">Check2</label>
-			<div class="col-sm-10">
-			  <input type="checkbox" class="form-control" name="ck2" placeholder="ckeck2" value="2">
-			</div>
-		  </div>
-		  
-		  <div class="form-group">
-			<label for="inputck3" class="col-sm-2 control-label">Check3</label>
-			<div class="col-sm-10">
-			  <input type="checkbox" class="form-control" name="ck3" placeholder="ckeck3" value="3">
-			</div>
-		  </div>
-		  
-		  <div class="form-group">
-			<label for="inputck4" class="col-sm-2 control-label">Check4</label>
-			<div class="col-sm-10">
-			  <input type="checkbox" class="form-control" name="ck4" placeholder="ckeck4" value="4">
-			</div>
-		  </div>
-		  
-		  <div class="form-group">
-			<label for="inputck5" class="col-sm-2 control-label">Check5</label>
-			<div class="col-sm-10">
-			  <input type="checkbox" class="form-control" name="ck5" placeholder="ckeck5" value="5">
-			</div>
-		  </div>
-		  
-		  <div class="form-group">
-			<label for="inputck6" class="col-sm-2 control-label">Check6</label>
-			<div class="col-sm-10">
-			  <input type="checkbox" class="form-control" name="ck6" placeholder="ckeck6" value="6">
-			</div>
-		  </div>
+
+		  <?php $name=1;
+
+		   while ($resultado = mysqli_fetch_array($result)) {
+		  	echo "<div class='form-group'>";
+		  	echo "<label for='".$name."' class='col-sm-2 control-label'>".$resultado['desc_vantagem']."</label>";
+		  	echo "<div class='col-sm-10'>";
+		  	echo "<input type='checkbox' class='form-control' name='".$name."' value='".$resultado['id_vantagem']."'>";
+		  	echo "</div>";
+		  	echo "</div>";
+		  	$name++;
+		  } ?>
 		  
 		  <div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">

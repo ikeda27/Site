@@ -20,6 +20,7 @@ if(empty($resultado)){
 	$_SESSION['usuarioNivelAcesso'] = $resultado['nivel_acesso_id'];
 	$_SESSION['usuarioLogin'] 		= $resultado['login'];
 	$_SESSION['usuarioSenha'] 		= $resultado['senha'];
+	$_SESSION['clube'] 				= $resultado['cod_clube'];
 	
 	if($_SESSION['usuarioNivelAcesso'] == 1){
 		header("Location: administrativo.php");

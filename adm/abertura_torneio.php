@@ -21,6 +21,18 @@
 
 	}
 
+	function libera_variaveis(){
+
+	document.getElementById("armazena").disabled  = false;
+	document.getElementById("armazena1").disabled = false;
+	document.getElementById("armazena2").disabled = false;
+	document.getElementById("armazena3").disabled = false;
+	document.getElementById("armazena4").disabled = false;
+	document.getElementById("armazena5").disabled = false;
+	document.getElementById("armazena6").disabled = false;
+
+	}
+
 	function pesquisa() {
 	  var input, filter, table, tr, td, i;
 	  input = document.getElementById("busca");
@@ -64,14 +76,14 @@
 			<a href='administrativo.php?link=42'><button type='button' class='btn btn-sm btn-info'>Listar</button></a>				
 		</div>
 	</div>
-  <div class="row">
-	<div class="col-md-12">
+
 
 	  <form class="form-horizontal" method="POST" id="armazena_form" action="processa/proc_calcula_torneio.php" onsubmit="contaCheckbox()">
 	  	
+	  			 
 	  	<div class="form-group">
-			<label for="tipo_torneio" class="col-sm-2 control-label">Escolha o Torneio</label>
-			<div class="col-sm-10">
+			<label for="escolha_torneio" class="col-sm-2 control-label">Escolha o Torneio</label>
+			<div class="col--10">
 				<select class="form-control " name="escolha_torneio" id="armazena">
 				<?php
 					// echo $linhas['cod_cadastro_torneio'];
@@ -84,6 +96,16 @@
 				</select>
 			</div>
 		  </div>
+
+		    <div class="row">
+				<div class="col-md-10">
+
+		<div class="form-group">
+			<label for="nome_torneio" class="col-sm-2 control-label">Nome do torneio:</label>
+				<div class="col-sm-10">
+			  		<input type="text" class="form-control" name="nome_torneio" placeholder="Nome do torneio"  id="armazena7">
+				</div>
+		</div>
 
 		  <div class="form-group">
 			<label for="vlr_entrada" class="col-sm-2 control-label">Valor da entrada:</label>
@@ -136,31 +158,33 @@
 			</div>
 		  </div>
 
-		  <div class="form-group">
+		<!--  <div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 			  <button type="button" class="btn btn-danger" action="abertura_torneio.php" value="1" name="habilita_usuario" onclick="javascript:armazena_variaveis();" >Cadastrar Regras</button>
 			</div>
-		  </div>
+	
+		antigo botão que trava as regras - supostamente desnecessario
 
-		<div class="page-header">
-			<h1> Selecionar jogadores iniciais</h1>
+		  </div> !-->
 
-		<input type="text" onkeypress="pesquisa()" name="busca" id="busca"><span class="glyphicon glyphicon-search" for = "busca"></span>
+		<div  class="page-header">
+			<h1 style="text-align:center; height:80;" > Selecionar jogadores iniciais</h1>
 
+		<input  type="text" onkeypress="pesquisa()" name="busca" id="busca">
 		</div>
 
 		<div>
 	  <table class="table" >
-		<thead>
+		<thead >
 		  <tr>
-			<th>Nome jogador</th>
-			<th>Plano</th>
-			<th>Saldo</th>
-			<th>Iniciar torneio</th>
+			<th style="text-align:center;" >Nome jogador</th>
+			<th style="text-align:center;" >Plano</th>
+			<th style="text-align:center;" >Saldo</th>
+			<th style="text-align:center;" >Iniciar torneio</th>
 
 			</tr>
 		</thead>
-		<tbody id="lista">
+		<tbody id="lista" style="text-align:center;">
 			<?php 
 				while($linhas_players = mysqli_fetch_array($resultado_players)){
 					$cont = 0;
@@ -175,9 +199,7 @@
 		</tbody>
 		</table>
 
-		<input type="hidden" name="qtd_checkbox" value="">
-
-		<button type="submit" class="btn btn-success"  name="calcula_torneio" href='administrativo.php?link=45' >Iniciar</button>
+		<button type="submit" class="btn btn-success"  name="calcula_torneio" href='administrativo.php?link=45'" >Iniciar</button>
 			</form>
 		</div>	
 	</div>

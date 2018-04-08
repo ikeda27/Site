@@ -17,8 +17,13 @@
 		  <ul class="dropdown-menu">
 			<li><a href="administrativo.php?link=2">Listar</a></li>
 			<li><a href="administrativo.php?link=3">Cadastrar</a></li>                
-			<li><a href="administrativo.php?link=18">Nivel de Acesso</a></li>   
-			<li><a href="administrativo.php?link=26">Mensagens</a></li>   
+			<!-- Ainda será trabalhado
+
+			<li><a href="administrativo.php?link=18">Nivel de Acesso</a></li> 
+
+			<li><a href="administrativo.php?link=26">Mensagens</a></li>  
+
+			!--> 
 			<li><a href="administrativo.php?link=27">Planos</a></li>   
 			<li><a href="administrativo.php?link=31">Vantagens</a></li>  
 		  </ul>
@@ -45,6 +50,7 @@
 			<li><a href="administrativo.php?link=41">Cadastrar torneio </a></li>
 			<li><a href="administrativo.php?link=42">Listar torneio </a></li>
 			<li><a href="administrativo.php?link=44">Abertura torneio </a></li>
+			<li><a href="administrativo.php?link=46">Partida aberta </a></li>
 		  </ul>
 		</li>
 		<li class="dropdown">

@@ -1,8 +1,9 @@
 
 <?php
 	include_once("conexao.php");
-	$resultado=mysqli_query($conectar,"SELECT * FROM cadastro_torneio WHERE situacao_id = 1 ORDER BY cod_cadastro_torneio");
-	$linhas=mysqli_num_rows($resultado);
+	$resultado_torneio=mysqli_query($conectar,"SELECT * FROM torneio INNER JOIN tipo_torneio ON torneio.tipo_torneio=tipo_torneio.cod_tp_torneio WHERE sit_torneio='1'");
+	$linhas=mysqli_num_rows($resultado_torneio);
+
 ?>	
 <div class="container theme-showcase" role="main">      
   <div class="page-header">
@@ -18,31 +19,24 @@
 	  <table class="table">
 		<thead>
 		  <tr>
-			<th hidden="TRUE">Codigo Torneio</th>
 			<th>Nome Torneio</th>
-			<th>Torneio Rankeado</th>
 			<th>Tipo do Torneio</th>
-			<th>Peso Torneio</th>
+			<th>Data do Torneio</th>>
 			<th>Valor Entrada</th>
 			<th>Qtde Máx. Rebuy</th>
 			<th>Valor Rebuy</th>
 			<th>Qtde Máx. Addon</th>			
 			<th>Valor Addon</th>
-			<th>Máx. Players</th>			
+			<th>Máx. Players Mesa</th>			
 		  </tr>
 		</thead>
 		<tbody>
 			<?php 
-				while($linhas = mysqli_fetch_array($resultado)){
-					$id_sit = $linhas['tipo_torneio'];
-					$result_sit = mysqli_query($conectar,"SELECT * FROM tipo_torneio WHERE cod_tp_torneio = '$id_sit' ");
-					$resultado_sit = mysqli_fetch_assoc($result_sit);
+				while($linhas = mysqli_fetch_array($resultado_torneio)){
 					echo "<tr>";
-						echo "<td hidden='TRUE'>".$linhas['cod_cadastro_torneio']."</td>";
 						echo "<td>".$linhas['nome_torneio']."</td>";
-						echo "<td>".$linhas['flg_ranking']."</td>";
-						echo "<td>".$resultado_sit['nome_tp']."</td>";
-						echo "<td>".$linhas['peso_torneio']."</td>";
+						echo "<td>".$linhas['nome_tp']."</td>";
+						echo "<td>".$linhas['data_torneio']."</td>";
 						echo "<td>".$linhas['vlr_entrada']."</td>";
 						echo "<td>".$linhas['qtd_max_rebuy']."</td>";
 						echo "<td>".$linhas['vlr_rebuy']."</td>";

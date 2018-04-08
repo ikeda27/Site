@@ -16,7 +16,7 @@
   </head>
 <?php
 	include_once("conexao.php");
-	$resultado=mysqli_query($conectar,"SELECT * FROM usuarios ORDER BY 'id'");
+	$resultado=mysqli_query($conectar,"SELECT * FROM usuarios INNER JOIN nivel_acessos ON nivel_acessos.id=usuarios.nivel_acesso_id ORDER BY 'id'");
 	$linhas=mysqli_num_rows($resultado);
 ?>	
 <div class="container theme-showcase" role="main">      
@@ -49,7 +49,7 @@
 						echo "<td>".$linhas['id']."</td>";
 						echo "<td>".$linhas['nome']."</td>";
 						echo "<td>".$linhas['email']."</td>";
-						echo "<td>".$linhas['nivel_acesso_id']."</td>";
+						echo "<td>".$linhas['nome_nivel']."</td>";
 						echo "<td>".$linhas['flag_user_ativo']."</td>";
 						?>
 						<td> 
