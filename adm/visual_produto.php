@@ -10,6 +10,9 @@
 	$id_sit = $resultado['situacao_id'];
 	$result_sit = mysqli_query($conectar,"SELECT * FROM situacaos WHERE id = '$id_sit' ");
 	$resultado_sit = mysqli_fetch_assoc($result_sit);
+	$result_est = mysqli_query($conectar,"SELECT qtd_produto FROM estoque WHERE id_produto = '$id' LIMIT 1");
+	$resultado_est = mysqli_fetch_assoc($result_est);
+	$qtd_est = $resultado_est['qtd_produto'];
 ?>
 <div class="container theme-showcase" role="main">      
 	<div class="page-header">
@@ -42,20 +45,13 @@
 			<div class="col-sm-9 col-md-9">
 				<?php echo $resultado['nome']; ?>
 			</div>
-			
-			<div class="col-sm-3 col-md-2">
-				<b>Descrição Curta:</b>
+
+			<!--<div class="col-sm-3 col-md-2">
+				<b>Descrição:</b>
 			</div>
 			<div class="col-sm-9 col-md-9">
-				<?php echo $resultado['descricao_curta']; ?>
-			</div>
-			
-			<div class="col-sm-3 col-md-2">
-				<b>Descricao Longa:</b>
-			</div>
-			<div class="col-sm-9 col-md-9">
-				<?php echo $resultado['descricao_longa']; ?>
-			</div>
+				<?php //if($resultado['descricao_curta']<>""){echo $resultado['descricao_curta'];}else{echo "-";} ?>
+			</div>-->
 			
 			<div class="col-sm-3 col-md-2">
 				<b>Preço:</b>
@@ -65,19 +61,13 @@
 			</div>
 			
 			<div class="col-sm-3 col-md-2">
-				<b>Tag:</b>
+				<b>Estoque:</b>
 			</div>
 			<div class="col-sm-9 col-md-9">
-				<?php echo $resultado['tag']; ?>
+
+				<?php if($qtd_est <> NULL){echo $qtd_est;}else{echo "-";}?>
 			</div>
-			
-			<div class="col-sm-3 col-md-2">
-				<b>Description:</b>
-			</div>
-			<div class="col-sm-9 col-md-9">
-				<?php echo $resultado['description']; ?>
-			</div>
-			
+
 			<div class="col-sm-3 col-md-2">
 				<b>Imagem:</b>
 			</div>

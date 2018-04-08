@@ -60,12 +60,14 @@
 			<li><a href="administrativo.php?link=51">Nova Venda</a></li>
 		  </ul>
 		</li>
+<!--
 		<li class="dropdown">
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carousel <span class="caret"></span></a>
 		  <ul class="dropdown-menu">
 			<li><a href="administrativo.php?link=25">Listar Carousel</a></li> 
 		  </ul>
 		</li>
+-->
 		<li class="dropdown">
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuração <span class="caret"></span></a>
 		  <ul class="dropdown-menu">
