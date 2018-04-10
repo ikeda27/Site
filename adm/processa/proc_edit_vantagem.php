@@ -1,6 +1,5 @@
 ﻿<?php
 session_start();
-include_once("../seguranca.php");
 include_once("../conexao.php");
 
 $id 		= $_POST["id"];

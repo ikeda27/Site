@@ -12,7 +12,7 @@ $nivel_de_acesso 	= $_POST["nivel_de_acesso"];
 $nivel_plano 		= $_POST["nivel_plano"];
 $saldo			 	= $_POST["saldo"];
 $nascimento 		= $_POST["nascimento"];
-$cod_clube=$_SESSION['clube'];
+$cod_clube			= $_SESSION['clube'];
 $erro=null;
 $tipo_erro=0;
 

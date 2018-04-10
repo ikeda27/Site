@@ -24,12 +24,12 @@
 ?>	
 <div class="container theme-showcase" role="main">      
   <div class="page-header">
-	<h1>Lista de Produtos</h1>
+	<h1>Lista de fornecedor</h1>
 	<?// echo $linhas ;?>
   </div>
   <div class="row espaco">
 		<div class="pull-right">
-			<a href="administrativo.php?link=11"><button type='button' class='btn btn-sm btn-success'>Cadastrar</button></a>
+			<a href="administrativo.php?link=36"><button type='button' class='btn btn-sm btn-success'>Cadastrar</button></a>
 		</div>
 	</div>
   <div class="row">

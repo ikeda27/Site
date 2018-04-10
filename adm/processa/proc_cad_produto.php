@@ -8,7 +8,7 @@
 	</head>
 	
 	<?php
-include_once("../seguranca.php");
+
 include_once("../conexao.php");
 //PARA TEXTAREA O TRATAMENTO ABAIXO DEVE SER REALIZADO PARA OBTER O TEXTO DO PRODUTO
 $nome 				= $_POST["nome"];

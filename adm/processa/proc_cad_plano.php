@@ -1,7 +1,8 @@
 <?php
 
 include_once("../conexao.php");
-$cod_clube=$_SESSION['clube'];
+session_start();
+$cod_clube = $_SESSION['clube'];
 $result = mysqli_query($conectar,"SELECT * FROM vantagens WHERE flag_vantagem_ativo=1 AND id_clube='$cod_clube'");
 $resultado = mysqli_num_rows($result);
 $vantagens=0;
@@ -44,7 +45,7 @@ if ($nome != ""){
 		<?php
 		if ($acao > 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/listar_plano.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=27'>
 				<script type=\"text/javascript\">
 					alert(\"Plano cadastrado com Sucesso.\");
 				</script>
@@ -52,7 +53,7 @@ if ($nome != ""){
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/listar_plano.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=27'>
 				<script type=\"text/javascript\">
 					alert(\"Plano não foi cadastrado com Sucesso.\");
 				</script>

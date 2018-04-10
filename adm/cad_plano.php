@@ -1,5 +1,6 @@
 ﻿
 <?php
+	$cod_clube=$_SESSION['clube'];
 	$result = mysqli_query($conectar,"SELECT * FROM vantagens WHERE flag_vantagem_ativo=1 AND id_clube='$cod_clube' ");
 	$resultado = mysqli_num_rows($result);
 ?>

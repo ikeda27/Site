@@ -34,9 +34,9 @@
 		  </div>
 		  
 		  <div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Descrição máximo 180 letras</label>
+			<label for="inputEmail3" class="col-sm-2 control-label">Descrição</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="description" placeholder="Descrição">
+			  <input type="text" class="form-control" name="description" placeholder="Máximo 180 letras">
 			</div>
 		  </div>
 		  

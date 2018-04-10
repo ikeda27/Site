@@ -1,7 +1,9 @@
 ﻿<?php
 	include_once("conexao.php");
-	$result=mysqli_query($conectar,"SELECT * FROM partida INNER JOIN torneio on torneio.cod_torneio=partida.cod_partida INNER JOIN usuarios ON usuarios.id=partida.cod_player");
+	$cod_clube=$_SESSION['clube'];
+	$result=mysqli_query($conectar,"SELECT * FROM partida INNER JOIN torneio on torneio.cod_torneio=partida.cod_partida INNER JOIN usuarios ON usuarios.id=partida.cod_player where cod_club='$cod_club' AND sit_torneio=1 ");
 	$resultado=mysqli_num_rows($result);
+	$qtd_max_player_mesa=$resultado['qtd_max_player_mesa'];
 ?>
 <div class="container theme-showcase" role="main">      
 	<div class="page-header">
