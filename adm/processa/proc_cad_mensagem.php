@@ -1,6 +1,14 @@
 ﻿<?php
 session_start();
-include_once("../seguranca.php");
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
+
 include_once("../conexao.php");
 $assunto 				= $_POST["Assunto"];
 $mensagem 				= $_POST["Mensagem"];
@@ -18,7 +26,7 @@ $query = mysqli_query($conectar,"INSERT INTO mensagens (conteudo_mensagem, data_
 		<?php
 		if (mysqli_affected_rows($conectar) != 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=26'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=26'>
 				<script type=\"text/javascript\">
 					alert(\"Sua mensagem foi cadastrada com Sucesso.\");
 				</script>
@@ -26,7 +34,7 @@ $query = mysqli_query($conectar,"INSERT INTO mensagens (conteudo_mensagem, data_
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=26'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=26'>
 				<script type=\"text/javascript\">
 					alert(\"Sua mensagem não foi cadastrada com Sucesso.\");
 				</script>

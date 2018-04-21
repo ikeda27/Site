@@ -1,5 +1,5 @@
 ﻿<?php
-	session_start();
+  session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,11 +20,13 @@
 
   <body>
 	<?php
-		unset($_SESSION['usuarioId'],			
-		      $_SESSION['usuarioNome'], 		
-		      $_SESSION['usuarioNivelAcesso'], 
-		      $_SESSION['usuarioLogin'], 		
-		      $_SESSION['usuarioSenha']);
+    if(isset($_SESSION['usuarioId'])){
+		  unset($_SESSION['usuarioId'],			
+        $_SESSION['usuarioNome'], 		
+        $_SESSION['usuarioNivelAcesso'], 
+        $_SESSION['usuarioLogin'], 		
+        $_SESSION['usuarioSenha']);
+    }
 	?>
     <div class="container">		
       <form class="form-signin" method="POST" action="valida_login.php">

@@ -1,7 +1,15 @@
 ﻿<?php
-
-include_once("../conexao.php");
 session_start();
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
+include_once("../conexao.php");
+
 $cod_clube=$_SESSION['clube'];
 $result = mysqli_query($conectar,"SELECT * FROM vantagens WHERE flag_vantagem_ativo=1 AND id_clube='$cod_clube'");
 $resultado = mysqli_num_rows($result);
@@ -40,7 +48,7 @@ $query = mysqli_query($conectar,"UPDATE planos SET desc_plano ='$nome',vantagens
 		<?php
 		if (mysqli_affected_rows($conectar) != 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=27'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=27'>
 				<script type=\"text/javascript\">
 					alert(\"Plano editado com Sucesso.\");
 				</script>
@@ -48,7 +56,7 @@ $query = mysqli_query($conectar,"UPDATE planos SET desc_plano ='$nome',vantagens
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=27'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=27'>
 				<script type=\"text/javascript\">
 					alert(\"Plano não foi editado com Sucesso.\");
 				</script>

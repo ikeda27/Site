@@ -1,6 +1,13 @@
 ﻿<?php
 session_start();
-include_once("../seguranca.php");
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
 include_once("../conexao.php");
 $id 				= $_POST["id"];
 $nome 				= $_POST["nome"];
@@ -93,7 +100,7 @@ $query = mysqli_query($conectar,"UPDATE usuarios set nome ='$nome', email = '$em
 		<?php
 		if ($tipo_erro==1){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=2'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=2'>
 				<script type=\"text/javascript\">
 					alert(\"Nome de usuario já cadastrado neste clube.\");
 				</script>
@@ -101,7 +108,7 @@ $query = mysqli_query($conectar,"UPDATE usuarios set nome ='$nome', email = '$em
 		}
 		elseif ($tipo_erro==2){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=2'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=2'>
 				<script type=\"text/javascript\">
 					alert(\"Este e-mail já esta sendo utilizado neste clube.\");
 				</script>
@@ -109,7 +116,7 @@ $query = mysqli_query($conectar,"UPDATE usuarios set nome ='$nome', email = '$em
 		}
 		elseif ($tipo_erro==3){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=2'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=2'>
 				<script type=\"text/javascript\">
 					alert(\"Usuario já cadastrado neste clube.\");
 				</script>
@@ -117,7 +124,7 @@ $query = mysqli_query($conectar,"UPDATE usuarios set nome ='$nome', email = '$em
 		}
 		elseif ($tipo_erro==4){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=2'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=2'>
 				<script type=\"text/javascript\">
 					alert(\"A senha tem menos de 6 caracteres.\");
 				</script>
@@ -125,7 +132,7 @@ $query = mysqli_query($conectar,"UPDATE usuarios set nome ='$nome', email = '$em
 		}
 		elseif ($tipo_erro==5){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=2'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=2'>
 				<script type=\"text/javascript\">
 					alert(\"Este CPF já foi utilizado neste clube.\");
 				</script>
@@ -133,7 +140,7 @@ $query = mysqli_query($conectar,"UPDATE usuarios set nome ='$nome', email = '$em
 		}
 		elseif ($tipo_erro==6){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=2'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=2'>
 				<script type=\"text/javascript\">
 					alert(\"Celular já cadastrado neste clube.\");
 				</script>
@@ -141,7 +148,7 @@ $query = mysqli_query($conectar,"UPDATE usuarios set nome ='$nome', email = '$em
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=2'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=2'>
 				<script type=\"text/javascript\">
 					alert(\"Usuario atualizado com Sucesso.\");
 				</script>

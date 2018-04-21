@@ -1,5 +1,11 @@
 ﻿
 <?php
+	if(isset($_SESSION['usuarioNome'])){
+		$usuario_logado=$_SESSION['usuarioNome'];
+	}else{
+		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+		die();
+	}
 	include_once("conexao.php");
 	$cod_clube = 1;
 	$resultado=mysqli_query($conectar,"SELECT u.nome, x.data_venda, x.cod_venda, SUM(x.valor_produto) AS valor_acumulado, SUM(valor_acum_produto) AS valor_final FROM (SELECT v.*, d.cod_produto, d.qtd_produto, d.valor_produto, d.qtd_produto*d.valor_produto AS valor_acum_produto, d.data_venda FROM vendas AS v INNER JOIN venda_dados AS d ON d.cod_venda = v.cod_venda WHERE v.cod_clube = '$cod_clube') AS x INNER JOIN usuarios AS u ON u.id = x.cod_cliente GROUP BY u.nome, x.data_venda, x.cod_venda");

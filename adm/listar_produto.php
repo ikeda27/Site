@@ -1,3 +1,11 @@
+<?php
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>

@@ -1,4 +1,10 @@
 ﻿<?php
+	if(isset($_SESSION['usuarioNome'])){
+		$usuario_logado=$_SESSION['usuarioNome'];
+	}else{
+		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+		die();
+	}
 	include_once("conexao.php");
 	$cod_torn = $_GET['id'];
 	//Executa consulta
@@ -67,56 +73,6 @@
 			</div>
 		  </div>
 		  
-		  <div class="form-group">
-			<label for="vlr_entrada" class="col-sm-2 control-label">Valor da entrada:</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="vlr_entrada" placeholder="Valor numerico" value="<?php echo $resultado['vlr_entrada']; ?>">
-			</div>
-		  </div>
-
-		  <div class="form-group">
-			<label for="qtd_max_rebuy" class="col-sm-2 control-label">Quantidade maxima de rebuy:</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="qtd_max_rebuy" placeholder="Quantidade maxima de rebuy" value="<?php echo $resultado['qtd_max_rebuy']; ?>">
-			</div>
-		  </div>
-
-		  <div class="form-group">
-			<label for="vlr_rebuy" class="col-sm-2 control-label">Valor do rebuy:</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="vlr_rebuy" placeholder="Valor do rebuy" value="<?php echo $resultado['vlr_rebuy']; ?>">
-			</div>
-		  </div>
-
-		   <div class="form-group">
-			<label for="qtd_max_addon" class="col-sm-2 control-label">Quantidade maxima de addon:</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="qtd_max_addon" placeholder="Quantidade maxima de addon" value="<?php echo $resultado['qtd_max_addon']; ?>">
-			</div>
-		  </div>
-
-		  <div class="form-group">
-			<label for="vlr_addon" class="col-sm-2 control-label">Valor do addon:</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="vlr_addon" placeholder="Valor do addon" value="<?php echo $resultado['vlr_addon']; ?>">
-			</div>
-		  </div>
-
-		  	<div class="form-group">
-			<label for="qtd_max_player_mesa" class="col-sm-2 control-label">Quantidade maxima de player por mesa:</label>
-			<div class="col-sm-10">
-			  <select class="form-control" name="qtd_max_player_mesa">
-				  <option value="3" <?php if( $resultado['qtd_max_player_mesa'] == 3){ echo 'selected'; } ?>>3</option>
-				  <option value="4" <?php if( $resultado['qtd_max_player_mesa'] == 4){ echo 'selected'; } ?>>4</option>
-				  <option value="5" <?php if( $resultado['qtd_max_player_mesa'] == 5){ echo 'selected'; } ?>>5</option>
-				  <option value="6" <?php if( $resultado['qtd_max_player_mesa'] == 6){ echo 'selected'; } ?>>6</option>
-				  <option value="7" <?php if( $resultado['qtd_max_player_mesa'] == 7){ echo 'selected'; } ?>>7</option>
-				  <option value="8" <?php if( $resultado['qtd_max_player_mesa'] == 8){ echo 'selected'; } ?>>8</option>
-				  <option value="9" <?php if( $resultado['qtd_max_player_mesa'] == 9){ echo 'selected'; } ?>>9</option>
-				  <option value="10" <?php if( $resultado['qtd_max_player_mesa'] == 10){ echo 'selected'; } ?>>10</option>
-				</select>
-			</div>
-		  </div>
 		  
 		  <input type="hidden" name="id" value="<?php echo $resultado['cod_cadastro_torneio']; ?>">
 		  <div class="form-group">

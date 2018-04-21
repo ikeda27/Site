@@ -1,4 +1,12 @@
-﻿<div class="container theme-showcase" role="main">      
+﻿<?php
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+?>
+<div class="container theme-showcase" role="main">      
   <div class="page-header">
 	<h1>Cadastrar Situação</h1>
   </div>

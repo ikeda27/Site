@@ -1,5 +1,13 @@
 ﻿<?php
 session_start();
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
 include_once("../conexao.php");
 
 $nome 		= $_POST["nome"];
@@ -20,7 +28,7 @@ if ($nome != ""){
 		<?php
 		if ($acao > 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=31'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=31'>
 				<script type=\"text/javascript\">
 					alert(\"Vantagem cadastrada com Sucesso.\");
 				</script>
@@ -28,7 +36,7 @@ if ($nome != ""){
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=31'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=31'>
 				<script type=\"text/javascript\">
 					alert(\"Vantagem não foi cadastrada com Sucesso.\");
 				</script>

@@ -1,7 +1,17 @@
 ﻿<?php
 session_start();
 include_once("seguranca.php");
+
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+
+
 include_once("conexao.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -84,6 +94,7 @@ include_once("conexao.php");
 		$pag[44] = "abertura_torneio.php";
 		$pag[45] = "proc_calcula_torneio.php";
 		$pag[46] = "visual_torneio.php";
+		$pag[47] = "manipula_torneio_aberto";
 		$pag[50] = "listar_vendas.php";
 		$pag[51] = "listar_datatable.php";
 		$pag[52] = "editar_vendas.php";

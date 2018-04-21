@@ -1,5 +1,13 @@
 ﻿
 <?php
+	if(isset($_SESSION['usuarioNome'])){
+		$usuario_logado=$_SESSION['usuarioNome'];
+	}else{
+		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+		die();
+	}
+	
+	$cod_clube = $_SESSION['clube'];
 	$result = mysqli_query($conectar,"SELECT * FROM vantagens WHERE flag_vantagem_ativo=1 AND id_clube='$cod_clube' ");
 	$resultado = mysqli_num_rows($result);
 ?>

@@ -1,5 +1,11 @@
 
 <?php
+	if(isset($_SESSION['usuarioNome'])){
+		$usuario_logado=$_SESSION['usuarioNome'];
+	}else{
+		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+		die();
+	}
 	include_once("conexao.php");
 	$resultado_torneio=mysqli_query($conectar,"SELECT * FROM torneio INNER JOIN tipo_torneio ON torneio.tipo_torneio=tipo_torneio.cod_tp_torneio WHERE sit_torneio='1'");
 	$linhas=mysqli_num_rows($resultado_torneio);

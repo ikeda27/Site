@@ -1,6 +1,13 @@
 ﻿<?php
 session_start();
-include_once("../seguranca.php");
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
 include_once("../conexao.php");
 $id 				= $_GET["id"];
 $situacao			= $_GET["situacao"];
@@ -56,7 +63,7 @@ if($situacao == 3){
 		<?php
 		if (mysqli_affected_rows($conectar) != 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=22'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=22'>
 				<script type=\"text/javascript\">
 					alert(\"Produto destacado com sucesso.\");
 				</script>
@@ -64,7 +71,7 @@ if($situacao == 3){
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=22'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=22'>
 				<script type=\"text/javascript\">
 					alert(\"Produto não foi destacado com sucesso.\");
 				</script>

@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿<?php
+
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+
+?>
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
@@ -12,32 +22,11 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/signin.css" rel="stylesheet">
     <script src="js/ie-emulation-modes-warning.js"></script>
-    <script type="text/javascript">
-
-    		function pesquisa() {
-	  var input, filter, table, tr, td, i;
-	  input = document.getElementById("busca");
-	  filter = input.value.toUpperCase();
-	  table = document.getElementById("lista");
-	  tr = table.getElementsByTagName("tr");
-	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[0];
-	    if (td) {
-	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-	        tr[i].style.display = "";
-	      } else {
-	        tr[i].style.display = "none";
-	      }
-	    } 
-	  }
-	}
-
-    </script>
 
   </head>
 <?php
 	include_once("conexao.php");
-	$resultado=mysqli_query($conectar,"SELECT * , usuarios.id AS id_usu FROM usuarios INNER JOIN nivel_acessos ON nivel_acessos.id=usuarios.nivel_acesso_id ORDER BY 'id'");
+	$resultado=mysqli_query($conectar,"SELECT u.*,n.nome_nivel FROM usuarios AS u INNER JOIN nivel_acessos AS n ON n.id=u.nivel_acesso_id ORDER BY u.id");
 	$linhas=mysqli_num_rows($resultado);
 ?>	
 <div class="container theme-showcase" role="main">      
@@ -45,16 +34,13 @@
 	<h1>Lista de Usuário</h1>
   </div>
   <div class="row espaco">
-  	<div class="input-group col-md-3"> 
-		<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span><input  type="text" onkeypress="pesquisa()"  name="busca" id="busca" class="form-control" >
-	</div>
 		<div class="pull-right">
 			<a href="administrativo.php?link=3"><button type='button' class='btn btn-sm btn-success'>Cadastrar</button></a>
 		</div>
 	</div>
   <div class="row">
 	<div class="col-md-12">
-	  <table class="table" >
+	  <table class="table">
 		<thead>
 		  <tr>
 			<th>ID</th>
@@ -66,22 +52,22 @@
 			 
 		  </tr>
 		</thead>
-		<tbody id="lista" >
+		<tbody>
 			<?php 
 				while($linhas = mysqli_fetch_array($resultado)){
 					echo "<tr>";
-						echo "<td>".$linhas['id_usu']."</td>";
+						echo "<td>".$linhas['id']."</td>";
 						echo "<td>".$linhas['nome']."</td>";
 						echo "<td>".$linhas['email']."</td>";
 						echo "<td>".$linhas['nome_nivel']."</td>";
 						echo "<td>".$linhas['flag_user_ativo']."</td>";
 						?>
 						<td> 
-						<a href='administrativo.php?link=5&id=<?php echo $linhas['id_usu']; ?>'><button type='button' class='btn btn-sm btn-primary'>Visualizar</button></a>
+						<a href='administrativo.php?link=5&id=<?php echo $linhas['id']; ?>'><button type='button' class='btn btn-sm btn-primary'>Visualizar</button></a>
 						
-						<a href='administrativo.php?link=4&id=<?php echo $linhas['id_usu']; ?>'><button type='button' class='btn btn-sm btn-warning'>Editar</button></a>
+						<a href='administrativo.php?link=4&id=<?php echo $linhas['id']; ?>'><button type='button' class='btn btn-sm btn-warning'>Editar</button></a>
 						
-						<a href='processa/proc_apagar_usuario.php?id=<?php echo $linhas['id_usu']; ?>'><button type='button' class='btn btn-sm btn-danger'>Apagar</button></a>
+						<a href='processa/proc_apagar_usuario.php?id=<?php echo $linhas['id']; ?>'><button type='button' class='btn btn-sm btn-danger'>Apagar</button></a>
 						
 						<?php
 					echo "</tr>";
