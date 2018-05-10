@@ -46,11 +46,10 @@
 		 <li class="dropdown">
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jogos <span class="caret"></span></a>
 		  <ul class="dropdown-menu">
-			<li><a href="administrativo.php?link=">Agenda </a></li>
+			<!-- <li><a href="administrativo.php?link=">Agenda </a></li> -->
 			<li><a href="administrativo.php?link=41">Cadastrar torneio </a></li>
 			<li><a href="administrativo.php?link=42">Listar torneio </a></li>
 			<li><a href="administrativo.php?link=44">Abertura torneio </a></li>
-			<li><a href="administrativo.php?link=46">Partida aberta </a></li>
 		  </ul>
 		</li>
 		<li class="dropdown">
@@ -72,6 +71,7 @@
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuração <span class="caret"></span></a>
 		  <ul class="dropdown-menu">
 			<li><a href="administrativo.php?link=14">Situação</a></li>
+			<li><a href="administrativo.php?link=55">Métodos de Pagamento</a></li>
 		  </ul>
 		</li>
 		<li><a href="sair.php">Sair</a></li>
