@@ -28,7 +28,7 @@ $query = mysqli_query($conectar,"INSERT INTO cadastro_torneio ( flg_ranking , ti
 		<?php
 		if (mysqli_affected_rows($conectar) > 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=41'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=41'>
 				<script type=\"text/javascript\">
 					alert(\"Torneio cadastrado com Sucesso.\");
 				</script>
@@ -36,7 +36,7 @@ $query = mysqli_query($conectar,"INSERT INTO cadastro_torneio ( flg_ranking , ti
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=41'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=41'>
 				<script type=\"text/javascript\">
 					alert(\"Torneio não foi cadastrado com Sucesso.\");
 				</script>

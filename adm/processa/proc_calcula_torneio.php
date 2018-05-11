@@ -67,7 +67,7 @@ foreach ($cadeira[0] as $key => $value) {
 
 		if (mysqli_affected_rows($conectar) != 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=14'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=42'>
 				<script type=\"text/javascript\">
 					alert(\"Situação cadastrada com Sucesso.\");
 				</script>
@@ -75,7 +75,7 @@ foreach ($cadeira[0] as $key => $value) {
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=14'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=42'>
 				<script type=\"text/javascript\">
 					alert(\"Situação não foi cadastrada com Sucesso.\");
 				</script>

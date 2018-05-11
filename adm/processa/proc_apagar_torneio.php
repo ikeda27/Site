@@ -19,7 +19,7 @@ $linhas = mysqli_affected_rows($conectar);
 		<?php
 		if (mysqli_affected_rows($conectar) != 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=42'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=42'>
 				<script type=\"text/javascript\">
 					alert(\"Torneio apagado com Sucesso.\");
 				</script>
@@ -27,7 +27,7 @@ $linhas = mysqli_affected_rows($conectar);
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=42'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=42'>
 				<script type=\"text/javascript\">
 					alert(\"Torneio não foi apagado com Sucesso.\");
 				</script>
