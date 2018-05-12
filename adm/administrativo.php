@@ -1,7 +1,17 @@
 ﻿<?php
 session_start();
 include_once("seguranca.php");
+
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+
+
 include_once("conexao.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,14 +28,6 @@ include_once("conexao.php");
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/theme.css" rel="stylesheet">
     <script src="js/ie-emulation-modes-warning.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <link href="css/theme.css" rel="stylesheet">
-    <script src="js/jquery_3_1.js"></script>
-    <script src="js/jquery.mask.js"></script>
-    <script src="js/mascaras.js"></script>
-    
- 
   </head>
 
   <body role="document">
@@ -84,10 +86,14 @@ include_once("conexao.php");
 		$pag[44] = "abertura_torneio.php";
 		$pag[45] = "proc_calcula_torneio.php";
 		$pag[46] = "visual_torneio.php";
+		$pag[47] = "manipula_torneio_aberto";
+<<<<<<< HEAD
+=======
 		$pag[50] = "listar_vendas.php";
 		$pag[51] = "listar_datatable.php";
 		$pag[52] = "editar_vendas.php";
 		$pag[53] = "visual_vendas.php";
+>>>>>>> 23a105e6e864b353f2fbc0e38071801b2a44d224
 
 		if(!empty($link)){
 			if(file_exists($pag[$link])){

@@ -1,6 +1,13 @@
 ﻿<?php
 session_start();
-include_once("../seguranca.php");
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
 include_once("../conexao.php");
 $id 		= $_GET["id"];
 
@@ -19,7 +26,7 @@ $linhas 	= mysqli_affected_rows($conectar);
 		<?php
 		if (mysqli_affected_rows($conectar) != 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=31'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=31'>
 				<script type=\"text/javascript\">
 					alert(\"Vantagem apagada com Sucesso.\");
 				</script>
@@ -27,7 +34,7 @@ $linhas 	= mysqli_affected_rows($conectar);
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=31'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=31'>
 				<script type=\"text/javascript\">
 					alert(\"Vantagem não foi apagada com Sucesso.\");
 				</script>

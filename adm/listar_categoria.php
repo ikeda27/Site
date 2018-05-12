@@ -1,5 +1,11 @@
 ﻿
 <?php
+	if(isset($_SESSION['usuarioNome'])){
+		$usuario_logado=$_SESSION['usuarioNome'];
+	}else{
+		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+		die();
+	}
 	include_once("conexao.php");
 	$resultado=mysqli_query($conectar,"SELECT * FROM categorias ORDER BY 'id'");
 	$linhas=mysqli_num_rows($resultado);

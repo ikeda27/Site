@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿<?php
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+?>
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
@@ -24,12 +32,16 @@
 ?>	
 <div class="container theme-showcase" role="main">      
   <div class="page-header">
-	<h1>Lista de fornecedor</h1>
+<<<<<<< HEAD
+	<h1>Lista de Produtos</h1>
+=======
+	<h1>Lista de Fornecedor</h1>
+>>>>>>> 23a105e6e864b353f2fbc0e38071801b2a44d224
 	<?// echo $linhas ;?>
   </div>
   <div class="row espaco">
 		<div class="pull-right">
-			<a href="administrativo.php?link=36"><button type='button' class='btn btn-sm btn-success'>Cadastrar</button></a>
+			<a href="administrativo.php?link=11"><button type='button' class='btn btn-sm btn-success'>Cadastrar</button></a>
 		</div>
 	</div>
   <div class="row">

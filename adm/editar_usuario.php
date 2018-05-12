@@ -1,17 +1,17 @@
 ﻿<?php
+	if(isset($_SESSION['usuarioNome'])){
+		$usuario_logado=$_SESSION['usuarioNome'];
+	}else{
+		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+		die();
+	}
 	include_once("conexao.php");
 	$id = $_GET['id'];
-	$cod_clube=$_SESSION['clube'];
 	//Executa consulta
 	$result = mysqli_query($conectar,"SELECT * FROM usuarios WHERE id = '$id' LIMIT 1");
 	$resultado = mysqli_fetch_assoc($result);
-	$result_planos = mysqli_query($conectar,"SELECT * FROM planos  WHERE id_clube='$cod_clube'");
-	$resultado_planos = mysqli_fetch_assoc($result_planos);
-
 ?>
 <div class="container theme-showcase" role="main">      
-  
-
   <div class="page-header">
 	<h1>Editar Usuário</h1>
   </div>
@@ -57,37 +57,28 @@
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Documento</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" required name="documento" id="cpf" placeholder="documento" value="<?php echo $resultado['documento']; ?>">
+			  <input type="text" class="form-control" required name="documento" placeholder="documento" value="<?php echo $resultado['documento']; ?>">
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Telefone</label>
 			<div class="col-sm-10">
-			  <input type="tel" class="form-control" required name="telefone" id="tel" placeholder="Celular" value="<?php echo $resultado['telefone']; ?>">
+			  <input type="tel" class="form-control" required name="telefone" placeholder="telefone" value="<?php echo $resultado['telefone']; ?>">
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Plano</label>
 			<div class="col-sm-10">
-			  <select class="form-control" name="plano">
-			  <?php
-
-			  while ($resultado_planos = mysqli_fetch_array($result_planos)) {
-			  	
-		  	echo "<option value='".$resultado_planos['id_plano']."'>".$resultado_planos['desc_plano']."</option>";
-		  } 
-
-			  ?>
-				</select>
+			  <input type="text" class="form-control" name="plano" required placeholder="plano" value="<?php echo $resultado['plano']; ?>">
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Data Nascimento</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control"  required name="nascimento" id="data" placeholder="nascimento" value="<?php echo $resultado['nascimento']; ?>">
+			  <input type="date" class="form-control"  required name="nascimento"  placeholder="nascimento" value="<?php echo $resultado['nascimento']; ?>">
 			</div>
 		  </div>
 		  

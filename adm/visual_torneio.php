@@ -1,67 +1,92 @@
 ﻿<?php
+<<<<<<< HEAD
+	$id = $_GET['id'];
+	include_once("conexao.php");
+	$result = mysqli_query($conectar,"SELECT * FROM cadastro_torneio WHERE cod_cadastro_torneio = '$id'");
+	$resultado = mysqli_fetch_assoc($result);
+=======
+	if(isset($_SESSION['usuarioNome'])){
+		$usuario_logado=$_SESSION['usuarioNome'];
+	}else{
+		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+		die();
+	}
 	include_once("conexao.php");
 	$cod_clube=$_SESSION['clube'];
-	$result=mysqli_query($conectar,"SELECT * FROM partida INNER JOIN torneio on torneio.cod_torneio=partida.cod_partida INNER JOIN usuarios ON usuarios.id=partida.cod_player where cod_club='$cod_club' AND sit_torneio=1 ");
++	$result=mysqli_query($conectar,"SELECT * FROM partida INNER JOIN torneio on torneio.cod_torneio=partida.cod_partida INNER JOIN usuarios ON usuarios.id=partida.cod_player where cod_club='$cod_club' AND sit_torneio=1 ");
+ 	$resultado=mysqli_num_rows($result);
++	$qtd_max_player_mesa=$resultado['qtd_max_player_mesa'];
+ ?>
+ <div class="container theme-showcase" role="main">      
+ 	<div class="page-header">
+
 	$resultado=mysqli_num_rows($result);
-	$qtd_max_player_mesa=$resultado['qtd_max_player_mesa'];
+>>>>>>> 23a105e6e864b353f2fbc0e38071801b2a44d224
 ?>
 <div class="container theme-showcase" role="main">      
 	<div class="page-header">
-		<h1>Usuarios em jogo: </h1>
+		<h1>Visualiza Torneio</h1>
 	</div>
 	
-	 <div class="row espaco">
+	<!-- Botoes de alteracao  -->
+  	<div class="row col-md-8">
 		<div class="pull-right">
+			<a href="administrativo.php?link=42"><button type='button' class='btn btn-sm btn-info'><span class="glyphicon glyphicon-eye-open align-left" aria-hidden="true"></span></button></a>
+
+			<a href="administrativo.php?link=43&id=<?php echo $id; ?>"><button type='button' class='btn btn-sm btn-warning'><span class="glyphicon glyphicon-pencil align-left" aria-hidden="true"></span></button></a>
+
+			<a href="processa/proc_apagar_torneio.php?id=<?php echo $id; ?>"><button type='button' class='btn btn-sm btn-danger'><span class="glyphicon glyphicon-remove align-left" aria-hidden="true"></span></button></a>
 		</div>
 	</div>
-  <div class="row">
-	<div class="col-md-12">
-	  <table class="table">
-		<thead>
-		  <tr>
-		  	<th hidden="true">Cod Cliente</th>
-		  	<th hidden="true">Cod Torneio</th>
-			<th>Mesa</th>
-			<th>Nome Player</th>
-			<th>Qtd de rebuy</th>
-			<th>Qtd addon</th>
-			<th>Saldo a Pagar</th>
-			<th>Funções</th>		 
-		  </tr>
-		</thead>
-		<tbody>
-			<form class="form-horizontal" method="POST" action="processa/proc_add_rebuy.php" >
-			<?php 
-				while($resultado = mysqli_fetch_array($result)){
-					echo "<tr>";
-						echo "<td name='id_cliente'>".$resultado['id']."</td>";
-						echo "<td name='cod_torneio'>".$resultado['cod_torneio']."</td>";
-						echo "<td>".$resultado['cod_mesa']."</td>";
-						echo "<td>".$resultado['nome']."</td>";
-						echo "<td name='qtd_rebuy>".$resultado['qtd_rebuy']."</td>";
-						echo "<td name='qtd_addon>".$resultado['qtd_addon']."</td>";
-						echo "<td>".((($resultado['vlr_rebuy']*$resultado['qtd_rebuy'])+$resultado['vlr_entrada'])+$resultado['vlr_addon']*$resultado['qtd_addon'])."</td>";
-						?>
-						<td> 
-						<a href=""><button type='button' class='btn btn-sm btn-primary'><span class="glyphicon glyphicon-eye-open align-left" aria-hidden="true"></span></button></a>
-						
-						<div class="btn-group">
-						  <button type="button" class="btn btn-xs btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-pencil align-left" aria-hidden="true"></span>
-						     <span class="caret "></span>
-						  </button>
-						  <ul class="dropdown-menu">
-						    <li><button type='submit' name="rebuy" value="1" class='btn btn-sm btn-default'>Adcionar Rebuy</button></li>
-						    <li><button type='submit' value="1" name="addon" class='btn btn-sm btn-default'>Adicionar Addon</button></li>
-						  </ul>
-						</div>
-						
-						<a href=""><button type='button' class='btn btn-sm btn-danger'><span class="glyphicon glyphicon-remove align-left" aria-hidden="true"></span></button></a>
-						</td>
-					<?php echo "</tr>";}?>
-			</form>
-		</tbody>
-	  </table>
+
+	<!-- Informacoes de torneios cadastrados -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class=" col-sm-3 col-md-2">
+				<b>Nome Torneio</b>
+			</div>
+			<div class=" col-sm-9 col-md-9">
+				<?php echo $resultado['nome_torneio']; ?>
+			</div>
+			
+			<div class="col-sm-3 col-md-2">
+				<b>Torneio Rankeado:</b>
+			</div>
+			<div class="col-sm-9 col-md-9">
+				<?php if ($resultado['flg_ranking']) {
+					echo "Sim";
+				} else {
+					echo "Não";
+				}
+				?>
+			</div>
+			
+			<div class="col-sm-3 col-md-2">
+				<b>Tipo do Torneio:</b>
+			</div>
+			<div class="col-sm-9 col-md-9">
+				<?php
+					$id_tipo = $resultado['tipo_torneio'];
+					$result_tipo = mysqli_query($conectar,"SELECT * FROM tipo_torneio WHERE cod_tp_torneio = '$id_tipo' ");
+					$resultado_tipo = mysqli_fetch_assoc($result_tipo); 
+					echo $resultado_tipo['nome_tp']; 
+					?>
+			</div>
+			
+			<div class="col-sm-3 col-md-2">
+				<b>Peso Torneio:</b>
+			</div>
+			<div class="col-sm-9 col-md-9">
+				<?php echo $resultado['peso_torneio']; ?>
+			</div>
+			
+			<div class="col-sm-3 col-md-2">
+				<b>Data Criação Torneio:</b>
+			</div>
+			<div class="col-sm-9 col-md-9">
+				<?php echo $resultado['dt_torneio']; ?>
+			</div>
+		</div>
 	</div>
-	</div>
-	</div> <!-- /container -->
+</div> <!-- /container -->
 

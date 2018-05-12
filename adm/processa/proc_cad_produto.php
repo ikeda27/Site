@@ -1,5 +1,16 @@
 ﻿<?php
-//session_start();
+session_start();
+<<<<<<< HEAD
+=======
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
+>>>>>>> 23a105e6e864b353f2fbc0e38071801b2a44d224
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,21 +19,22 @@
 	</head>
 	
 	<?php
-
+<<<<<<< HEAD
+include_once("../seguranca.php");
+=======
+//include_once("../seguranca.php");
+>>>>>>> 23a105e6e864b353f2fbc0e38071801b2a44d224
 include_once("../conexao.php");
-//PARA TEXTAREA O TRATAMENTO ABAIXO DEVE SER REALIZADO PARA OBTER O TEXTO DO PRODUTO
 $nome 				= $_POST["nome"];
-$descricao_curta 	= strip_tags(trim($_POST["descricao_curta"]));
-$descricao_longa 	= $descricao_curta;
+$descricao_curta 	= $_POST["descricao_curta"];
+$descricao_longa 	= $_POST["descricao_longa"];
 $preco 				= $_POST["preco"];
 $tag 				= $_POST["tag"];
-$estoque 			= $_POST["estoque"];
-$description 		= $descricao_curta;
-$slug		 		= $descricao_curta;
+$description 		= $_POST["description"];
+$slug		 		= $_POST["slug"];
 $arquivo	 		= $_FILES['arquivo']['name'];
 $categoria_id 		= $_POST["categoria_id"];
 $situacao_id 		= $_POST["situacao_id"];
-$user	 	 		= $_POST["user"];
 
 //Pasta onde o arquivo vai ser salvo
 $_UP['pasta'] = '../../foto/';
@@ -50,83 +62,72 @@ if($_FILES['arquivo']['error'] != 0){
 }
 
 //Faz a verificação da extensao do arquivo
-$extensao = strtolower(end(explode('.', $arquivo)));
+$extensao = strtolower(end(explode('.', $_FILES['arquivo']['name'])));
 if(array_search($extensao, $_UP['extensoes'])=== false){
 	$query = mysqli_query($conectar,"INSERT INTO produtos (
-	categoria_id, 
-		created, 
-		descricao_curta, 
-		descricao_longa, 
-		description, 
-		imagem, 
-		modified, 
-		nome, 
-		preco, 
-		situacao_id, 
-		slug, 
-		tag) VALUES(
-		'$categoria_id',
-		NOW(),
-		'$descricao_curta',
-		'$descricao_longa',
-		'$description',
-		'$nome_final',
-		NOW(),
-		'$nome',
-		'$preco',
-		'$situacao_id',
-		'$slug',
-		'$tag')");
+	nome, 			
+	descricao_curta,
+	descricao_longa,
+	preco, 			
+	tag, 			
+	description,	
+	categoria_id, 	
+	situacao_id, 	 
+	created) VALUES(
+	'$nome',
+	'$descricao_curta',
+	'$descricao_longa',
+	'$preco',
+	'$tag',
+	'$description',
+	'$slug',
+	'$categoria_id',
+	'$situacao_id',
+	NOW())");
 	echo "
-		<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+		<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 		<script type=\"text/javascript\">
 			alert(\"A imagem não foi cadastrada for favor, envie arquivos com as seguintes extensões: png, jpg, jpeg e gif. As informações do produto foi cadastrado.\");
 		</script>
 	";
-	var_dump(1);
 }
 //Faz a verificação do tamanho do arquivo
 else if ($_UP['tamanho'] < $_FILES['arquivo']['size']){
 	echo "";
 	$query = mysqli_query($conectar,"INSERT INTO produtos (
-	categoria_id, 
-	created, 
-	descricao_curta, 
-	descricao_longa, 
-	description, 
-	imagem, 
-	modified, 
-	nome, 
-	preco, 
-	situacao_id, 
-	slug, 
-	tag) VALUES(
-	'$categoria_id',
-	NOW(),
+	nome, 			
+	descricao_curta,
+	descricao_longa,
+	preco, 			
+	tag, 			
+	description,	
+	slug,
+	categoria_id, 	
+	situacao_id, 	 
+	created) VALUES(
+	'$nome',
 	'$descricao_curta',
 	'$descricao_longa',
-	'$description',
-	'$nome_final',
-	NOW(),
-	'$nome',
 	'$preco',
-	'$situacao_id',
+	'$tag',
+	'$description',
 	'$slug',
-	'$tag')");
+	'$categoria_id',
+	'$situacao_id',
+	NOW())");
 	echo "
-		<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+		<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 		<script type=\"text/javascript\">
 			alert(\"O arquivo enviado é muito grande, envie arquivos de até 2mb. As informações do produto foi cadastrado.\");
 		</script>
 	";
-	var_dump(2);
 }
 
 //O arquivo passou em todas as verificações, hora de tentar move-lo para a pasta foto
 
 else{
 	//Primeiro verifica se deve trocar o nome do arquivo
-	if($_UP['renomeia'] == true){
+	if($UP['renomeia'] == true){
 		//Cria um nome baseado no UNIX TIMESTAMP atual e com extensão .jpg
 		$nome_final = time().'.jpg';
 	}else{
@@ -137,64 +138,43 @@ else{
 	if(move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta']. $nome_final)){
 		//Upload efetuado com sucesso, exibe a mensagem
 		$query = mysqli_query($conectar,"INSERT INTO produtos (
-		categoria_id, 
-		created, 
-		descricao_curta, 
-		descricao_longa, 
-		description, 
-		imagem, 
-		modified, 
-		nome, 
-		preco, 
-		situacao_id, 
-		slug, 
-		tag) VALUES(
-		'$categoria_id',
-		NOW(),
+		nome, 			
+		descricao_curta,
+		descricao_longa,
+		preco, 			
+		tag, 			
+		description, 	
+		imagem, 		
+		categoria_id, 	
+		situacao_id, 	 
+		created) VALUES(
+		'$nome',
 		'$descricao_curta',
 		'$descricao_longa',
-		'$description',
-		'$nome_final',
-		NOW(),
-		'$nome',
 		'$preco',
-		'$situacao_id',
+		'$tag',
+		'$description',
 		'$slug',
-		'$tag')");
-
-
-
+		'$nome_final',
+		'$categoria_id',
+		'$situacao_id',
+		NOW())");
 		echo "
-			<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+			<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 			<script type=\"text/javascript\">
 				alert(\"Produto cadatrado com Sucesso.\");
 			</script>
-		";
+		";	
 	}else{
 		//Upload não efetuado com sucesso, exibe a mensagem
 		echo "
-			<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+			<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 			<script type=\"text/javascript\">
 				alert(\"Produto não foi cadatrado com Sucesso.\");
 			</script>
 		";
 	}
 }
-
-
-//VERIFICA O ULTIMO PRODUTO DO CLIENTE (PROVAVELMENTE O ULTIMO CADASTRADO NESTE MOMENTO) E ATUALIZA O ESTOQUE DO MESMO EM OUTRA TABELA
-$resultado =mysqli_query($conectar, "SELECT nome,preco,id FROM produtos ORDER BY id DESC LIMIT 1");
-while($dados = mysqli_fetch_assoc($resultado)){
-	
-	if(($nome.'-'.$preco) == ($dados["nome"].'-'.$dados["preco"])) {
-		$id = $dados['id'];
-		$query = mysqli_query($conectar, "INSERT INTO estoque (cod_clube, id_produto, qtd_produto) VALUES ('$user','$id','$estoque')");
-	}
-}
-
-
-
-
 
 /*$query = mysqli_query($conectar,"INSERT INTO produtos (
 nome, 			
@@ -228,7 +208,7 @@ NOW())");
 		<?php
 		if (mysqli_affected_rows($conectar) != 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 				<script type=\"text/javascript\">
 					alert(\"Produto cadastrado com Sucesso.\");
 				</script>
@@ -236,7 +216,7 @@ NOW())");
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 				<script type=\"text/javascript\">
 					alert(\"Produto não foi cadastrado com Sucesso.\");
 				</script>

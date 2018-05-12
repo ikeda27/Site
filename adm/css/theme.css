@@ -3,6 +3,11 @@ body {
   padding-bottom: 30px;
 }
 
+#vermelho {
+
+	background-color: #FFDAB9;
+}
+
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
@@ -20,13 +25,3 @@ body {
 .espaco{
 	margin-bottom:15px;
 }
-
-body {
-    position: relative;
-    overflow-x: hidden;
-}
-body,
-html { height: 100%;}
-.nav .open > a, 
-.nav .open > a:hover, 
-.nav .open > a:focus {background-color: transparent;}

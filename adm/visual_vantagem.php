@@ -1,8 +1,14 @@
 ﻿<?php
+	if(isset($_SESSION['usuarioNome'])){
+		$usuario_logado=$_SESSION['usuarioNome'];
+	}else{
+		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+		die();
+	}
 	$id = $_GET['id'];
 	include_once("conexao.php");
 	//Executa consulta
-	$result = mysqli_query($conectar,"SELECT * FROM vantagens WHERE id_vantagem = '$id'  LIMIT 1");
+	$result = mysqli_query($conectar,"SELECT * FROM vantagens WHERE id_vantagem = '$id' LIMIT 1");
 	$resultado = mysqli_fetch_assoc($result);
 ?>
 <div class="container theme-showcase" role="main">      

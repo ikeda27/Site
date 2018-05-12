@@ -1,4 +1,12 @@
-﻿
+﻿<?php
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+?>
+
 <div class="container theme-showcase" role="main">      
   <div class="page-header">
 	<h1>Cadastrar Categoria</h1>
@@ -34,9 +42,9 @@
 		  </div>
 		  
 		  <div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Descrição</label>
+			<label for="inputEmail3" class="col-sm-2 control-label">Descrição máximo 180 letras</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="description" placeholder="Máximo 180 letras">
+			  <input type="text" class="form-control" name="description" placeholder="Descrição">
 			</div>
 		  </div>
 		  

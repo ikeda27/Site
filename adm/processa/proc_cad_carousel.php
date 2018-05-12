@@ -1,5 +1,13 @@
 ﻿<?php
 session_start();
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -66,7 +74,7 @@ session_start();
 						'$controle_ordem',
 						NOW())");
 						echo "
-							<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+							<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 							<script type=\"text/javascript\">
 								alert(\"A imagem não foi cadastrada for favor, envie arquivos com as seguintes extensões: png, jpg, jpeg e gif. As informações do produto foi cadastrado.\");
 							</script>
@@ -85,7 +93,7 @@ session_start();
 						'$controle_ordem',
 						NOW())");
 						echo "
-							<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+							<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 							<script type=\"text/javascript\">
 								alert(\"O arquivo enviado é muito grande, envie arquivos de até 2mb. As informações do produto foi cadastrado.\");
 							</script>
@@ -118,7 +126,7 @@ session_start();
 							'$controle_ordem',
 							NOW())");
 							echo "
-								<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+								<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 								<script type=\"text/javascript\">
 									alert(\"Imagem cadatrada com Sucesso.\");
 								</script>
@@ -126,7 +134,7 @@ session_start();
 						}else{
 							//Upload não efetuado com sucesso, exibe a mensagem
 							echo "
-								<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+								<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 								<script type=\"text/javascript\">
 									alert(\"Imagem não foi cadatrada com Sucesso.\");
 								</script>
@@ -184,7 +192,7 @@ session_start();
 				'$controle_ordem',
 				NOW())");
 				echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 					<script type=\"text/javascript\">
 						alert(\"A imagem não foi cadastrada for favor, envie arquivos com as seguintes extensões: png, jpg, jpeg e gif. As informações do produto foi cadastrado.\");
 					</script>
@@ -203,7 +211,7 @@ session_start();
 				'$controle_ordem',
 				NOW())");
 				echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 					<script type=\"text/javascript\">
 						alert(\"O arquivo enviado é muito grande, envie arquivos de até 2mb. As informações do produto foi cadastrado.\");
 					</script>
@@ -236,7 +244,7 @@ session_start();
 					'$controle_ordem',
 					NOW())");
 					echo "
-						<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+						<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 						<script type=\"text/javascript\">
 							alert(\"Imagem cadatrada com Sucesso.\");
 						</script>
@@ -244,7 +252,7 @@ session_start();
 				}else{
 					//Upload não efetuado com sucesso, exibe a mensagem
 					echo "
-						<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+						<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 						<script type=\"text/javascript\">
 							alert(\"Imagem não foi cadatrada com Sucesso.\");
 						</script>

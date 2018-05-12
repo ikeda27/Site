@@ -1,4 +1,10 @@
 ﻿<?php
+	if(isset($_SESSION['usuarioNome'])){
+		$usuario_logado=$_SESSION['usuarioNome'];
+	}else{
+		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+		die();
+	}
 	$id = $_GET['id'];
 	include_once("conexao.php");
 	//Executa consulta
@@ -10,9 +16,6 @@
 	$id_sit = $resultado['situacao_id'];
 	$result_sit = mysqli_query($conectar,"SELECT * FROM situacaos WHERE id = '$id_sit' ");
 	$resultado_sit = mysqli_fetch_assoc($result_sit);
-	$result_est = mysqli_query($conectar,"SELECT qtd_produto FROM estoque WHERE id_produto = '$id' LIMIT 1");
-	$resultado_est = mysqli_fetch_assoc($result_est);
-	$qtd_est = $resultado_est['qtd_produto'];
 ?>
 <div class="container theme-showcase" role="main">      
 	<div class="page-header">
@@ -20,13 +23,13 @@
 		
 	</div>
 	
-	<div class="row">
+	<div class="row col-sm-8">
 		<div class="pull-right">
-			<a href='administrativo.php?link=10'><button type='button' class='btn btn-sm btn-info'>Listar</button></a>
+			<a href='administrativo.php?link=10'><button type='button' class='btn btn-sm btn-info'><span class="glyphicon glyphicon-eye-open align-left" aria-hidden="true"></span></button></a>
 							
-			<a href='administrativo.php?link=13&id=<?php echo $resultado['id']; ?>'><button type='button' class='btn btn-sm btn-warning'>Editar</button></a>
+			<a href='administrativo.php?link=13&id=<?php echo $resultado['id']; ?>'><button type='button' class='btn btn-sm btn-warning'><span class="glyphicon glyphicon-pencil align-left" aria-hidden="true"></span></button></a>
 			
-			<a href='processa/proc_apagar_produto.php?id=<?php echo $resultado['id']; ?>'><button type='button' class='btn btn-sm btn-danger'>Apagar</button></a>
+			<a href='processa/proc_apagar_produto.php?id=<?php echo $resultado['id']; ?>'><button type='button' class='btn btn-sm btn-danger'><span class="glyphicon glyphicon-remove align-left" aria-hidden="true"></span></button></a>
 		</div>
 	</div>
 	
@@ -45,13 +48,20 @@
 			<div class="col-sm-9 col-md-9">
 				<?php echo $resultado['nome']; ?>
 			</div>
-
-			<!--<div class="col-sm-3 col-md-2">
-				<b>Descrição:</b>
+			
+			<div class="col-sm-3 col-md-2">
+				<b>Descrição Curta:</b>
 			</div>
 			<div class="col-sm-9 col-md-9">
-				<?php //if($resultado['descricao_curta']<>""){echo $resultado['descricao_curta'];}else{echo "-";} ?>
-			</div>-->
+				<?php echo $resultado['descricao_curta']; ?>
+			</div>
+			
+			<div class="col-sm-3 col-md-2">
+				<b>Descricao Longa:</b>
+			</div>
+			<div class="col-sm-9 col-md-9">
+				<?php echo $resultado['descricao_longa']; ?>
+			</div>
 			
 			<div class="col-sm-3 col-md-2">
 				<b>Preço:</b>
@@ -61,13 +71,19 @@
 			</div>
 			
 			<div class="col-sm-3 col-md-2">
-				<b>Estoque:</b>
+				<b>Tag:</b>
 			</div>
 			<div class="col-sm-9 col-md-9">
-
-				<?php if($qtd_est <> NULL){echo $qtd_est;}else{echo "-";}?>
+				<?php echo $resultado['tag']; ?>
 			</div>
-
+			
+			<div class="col-sm-3 col-md-2">
+				<b>Description:</b>
+			</div>
+			<div class="col-sm-9 col-md-9">
+				<?php echo $resultado['description']; ?>
+			</div>
+			
 			<div class="col-sm-3 col-md-2">
 				<b>Imagem:</b>
 			</div>

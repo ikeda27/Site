@@ -1,5 +1,13 @@
 ﻿<?php
 session_start();
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -70,7 +78,7 @@ if(array_search($extensao, $_UP['extensoes'])=== false){
 	'$situacao_id',
 	NOW())");
 	echo "
-		<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+		<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 		<script type=\"text/javascript\">
 			alert(\"A imagem não foi cadastrada for favor, envie arquivos com as seguintes extensões: png, jpg, jpeg e gif. As informações do produto foi cadastrado.\");
 		</script>
@@ -101,7 +109,7 @@ else if ($_UP['tamanho'] < $_FILES['arquivo']['size']){
 	'$situacao_id',
 	NOW())");
 	echo "
-		<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+		<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 		<script type=\"text/javascript\">
 			alert(\"O arquivo enviado é muito grande, envie arquivos de até 2mb. As informações do produto foi cadastrado.\");
 		</script>
@@ -145,7 +153,7 @@ else{
 		'$situacao_id',
 		NOW())");
 		echo "
-			<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+			<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 			<script type=\"text/javascript\">
 				alert(\"Produto cadatrado com Sucesso.\");
 			</script>
@@ -153,7 +161,7 @@ else{
 	}else{
 		//Upload não efetuado com sucesso, exibe a mensagem
 		echo "
-			<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+			<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 			<script type=\"text/javascript\">
 				alert(\"Produto não foi cadatrado com Sucesso.\");
 			</script>
@@ -193,7 +201,7 @@ NOW())");
 		<?php
 		if (mysqli_affected_rows($conectar) != 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 				<script type=\"text/javascript\">
 					alert(\"Produto cadastrado com Sucesso.\");
 				</script>
@@ -201,7 +209,7 @@ NOW())");
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=10'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=10'>
 				<script type=\"text/javascript\">
 					alert(\"Produto não foi cadastrado com Sucesso.\");
 				</script>

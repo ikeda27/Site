@@ -1,12 +1,23 @@
 ﻿<?php
 session_start();
+<<<<<<< HEAD
+include_once("../seguranca.php");
+=======
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
+>>>>>>> 23a105e6e864b353f2fbc0e38071801b2a44d224
 include_once("../conexao.php");
 
 $nome 		= $_POST["nome"];
-$cod_clube=$_SESSION['clube'];
 
 if ($nome != ""){
-	$query = mysqli_query($conectar,"INSERT INTO vantagens (desc_vantagem, flag_vantagem_ativo , id_clube) VALUES ('$nome',1, '$cod_clube')");
+	$query = mysqli_query($conectar,"INSERT INTO vantagens (desc_vantagem, flag_vantagem_ativo) VALUES ('$nome',1)");
 	$acao = mysqli_affected_rows($conectar);
 }
 ?>
@@ -20,7 +31,11 @@ if ($nome != ""){
 		<?php
 		if ($acao > 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=31'>
+<<<<<<< HEAD
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/listar_vantagem.php'>
+=======
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=31'>
+>>>>>>> 23a105e6e864b353f2fbc0e38071801b2a44d224
 				<script type=\"text/javascript\">
 					alert(\"Vantagem cadastrada com Sucesso.\");
 				</script>
@@ -28,7 +43,11 @@ if ($nome != ""){
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=31'>
+<<<<<<< HEAD
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/listar_vantagem.php'>
+=======
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=31'>
+>>>>>>> 23a105e6e864b353f2fbc0e38071801b2a44d224
 				<script type=\"text/javascript\">
 					alert(\"Vantagem não foi cadastrada com Sucesso.\");
 				</script>

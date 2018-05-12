@@ -1,5 +1,17 @@
 ﻿<?php
 session_start();
+<<<<<<< HEAD
+include_once("../seguranca.php");
+=======
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
+>>>>>>> 23a105e6e864b353f2fbc0e38071801b2a44d224
 include_once("../conexao.php");
 
 $id 		= $_POST["id"];
@@ -18,7 +30,7 @@ $query = mysqli_query($conectar,"UPDATE vantagens SET desc_vantagem ='$nome',fla
 		<?php
 		if (mysqli_affected_rows($conectar) != 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=31'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=31'>
 				<script type=\"text/javascript\">
 					alert(\"Vantagem editada com Sucesso.\");
 				</script>
@@ -26,7 +38,7 @@ $query = mysqli_query($conectar,"UPDATE vantagens SET desc_vantagem ='$nome',fla
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=31'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=31'>
 				<script type=\"text/javascript\">
 					alert(\"Vantagem não foi editada com Sucesso.\");
 				</script>

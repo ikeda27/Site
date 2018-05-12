@@ -1,0 +1,11 @@
+
+
+
+mexer link  linha 9 (action="processa/proc_cad_usuario.php")
+
+
+produto linha 19 transformar o form group em combo box linkado com o bdados.
+
+quantidade linha 26 transformar o form group em digitar qtde.
+
+usar para a grid de produtos a api com link .../Api/Grids/demos/jqxgrid/dataexport.htm

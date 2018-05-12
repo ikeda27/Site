@@ -1,6 +1,13 @@
 ﻿<?php
 session_start();
-include_once("../seguranca.php");
+/*
+if(isset($_SESSION['usuarioNome'])){
+	$usuario_logado=$_SESSION['usuarioNome'];
+}else{
+	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+	die();
+}
+*/
 include_once("../conexao.php");
 $id 				= $_GET["id"];
 $situacao			= $_GET["situacao"];
@@ -92,7 +99,7 @@ if($situacao == 3){
 		if(($situacao == 1)or($situacao == 2)){
 			if (mysqli_affected_rows($conectar) != 0 ){	
 				echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 					<script type=\"text/javascript\">
 						alert(\"Ordem do carousel editado com Sucesso.\");
 					</script>
@@ -100,7 +107,7 @@ if($situacao == 3){
 			}
 			 else{ 	
 					echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 					<script type=\"text/javascript\">
 						alert(\"Ordem do carousel não foi editado com Sucesso.\");
 					</script>
@@ -110,7 +117,7 @@ if($situacao == 3){
 		}if($situacao == 3){
 			if (mysqli_affected_rows($conectar) != 0 ){	
 				echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 					<script type=\"text/javascript\">
 						alert(\"Carousel retirado com sucesso do destaque.\");
 					</script>
@@ -118,7 +125,7 @@ if($situacao == 3){
 			}
 			 else{ 	
 					echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=25'>
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=25'>
 					<script type=\"text/javascript\">
 						alert(\"Carousel não foi retirado com sucesso do destaque.\");
 					</script>

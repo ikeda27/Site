@@ -1,4 +1,13 @@
 ﻿<?php
+session_start();
+	/*
+	if(isset($_SESSION['usuarioNome'])){
+		$usuario_logado=$_SESSION['usuarioNome'];
+	}else{
+		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
+		die();
+	}
+	*/
 	include_once("../conexao.php");
 
 
