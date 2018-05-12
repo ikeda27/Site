@@ -30,7 +30,7 @@ $query = mysqli_query($conectar,"INSERT INTO torneio ( vlr_entrada , qtd_max_reb
 		<?php
 		if (mysqli_affected_rows($conectar) > 0 ){	
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=41'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=41'>
 				<script type=\"text/javascript\">
 					alert(\"Torneio cadastrado com Sucesso.\");
 				</script>
@@ -38,7 +38,7 @@ $query = mysqli_query($conectar,"INSERT INTO torneio ( vlr_entrada , qtd_max_reb
 		}
 		 else{ 	
 				echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/adm/administrativo.php?link=41'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=41'>
 				<script type=\"text/javascript\">
 					alert(\"Torneio não foi cadastrado com Sucesso.\");
 				</script>

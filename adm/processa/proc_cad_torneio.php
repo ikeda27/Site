@@ -2,8 +2,6 @@
 session_start();
 //include_once("../seguranca.php");
 include_once("../conexao.php");
-
-
 $flg_ranking 		= $_POST["flg_ranking"];
 $tipo_torneio 		= $_POST["tipo_torneio"];
 $peso 				= $_POST["peso"];
@@ -13,6 +11,7 @@ $nome_torneio 		= $_POST["nome_torneio"];
 
 
 $query = mysqli_query($conectar,"INSERT INTO cadastro_torneio ( flg_ranking , tipo_torneio, peso_torneio, nome_torneio) VALUES ($flg_ranking , $tipo_torneio, $peso, '$nome_torneio')");
+
 
 
 ?>

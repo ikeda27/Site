@@ -94,7 +94,7 @@ include_once("conexao.php");
 		$pag[44] = "abertura_torneio.php";
 		$pag[45] = "proc_calcula_torneio.php";
 		$pag[46] = "visual_torneio.php";
-		$pag[47] = "manipula_torneio_aberto";
+		$pag[47] = "manipula_torneio_aberto.php";
 		$pag[50] = "listar_vendas.php";
 		$pag[51] = "listar_datatable.php";
 		$pag[52] = "editar_vendas.php";

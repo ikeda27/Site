@@ -1,11 +1,5 @@
 
 <?php
-	if(isset($_SESSION['usuarioNome'])){
-		$usuario_logado=$_SESSION['usuarioNome'];
-	}else{
-		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
-		die();
-	}
 	include_once("conexao.php");
 	$resultado=mysqli_query($conectar,"SELECT * FROM cadastro_torneio WHERE situacao_id = 1 ORDER BY cod_cadastro_torneio");
 	$linhas=mysqli_num_rows($resultado);
@@ -132,6 +126,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="qtd_mesas" class="col-sm-2 control-label">Quantidade mesas disponíveis:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="qtd_mesas" placeholder="Mesas abertas" id="armazena6">
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="qtd_max_player_mesa" class="col-sm-2 control-label">Quantidade maxima de player por mesa:</label>
 					<div class="col-sm-10">
 						<select class="form-control" name="qtd_max_player_mesa" id="armazena6">
@@ -162,6 +162,7 @@
 								<th style="text-align:center;">Plano</th>
 								<th style="text-align:center;">Saldo</th>
 								<th style="text-align:center;">Iniciar torneio</th>
+								<th style="text-align:center;">Addon</th>
 							</tr>
 						</thead>
 						<tbody id="lista" style="text-align:center;">
@@ -172,7 +173,8 @@
 										echo "<td>".$linhas_players['nome']."</td>";
 										echo "<td>".$linhas_players['plano']."</td>";
 										echo "<td>".$linhas_players['saldo']."</td>";
-										echo "<td> <input type='checkbox' name='checkbox_jogador[]' value='".$linhas_players['id']."' id='check".$cont."'></tr>";
+										echo "<td> <input type='checkbox' name='checkbox_jogador[]' value='".$linhas_players['id']."' id='check".$cont."'>";
+										echo "<td> <input type='checkbox' name='checkbox_addon[]' value='1' id='check".$cont."'></tr>";
 									$cont++;
 								}	echo "</tr>";
 							?>
