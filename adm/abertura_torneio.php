@@ -33,21 +33,29 @@
 
 	}
 
-	function pesquisa() {
+	function pesquisa(evt) {
 	  var input, filter, table, tr, td, i;
-	  input = document.getElementById("busca");
-	  filter = input.value.toUpperCase();
-	  table = document.getElementById("lista");
-	  tr = table.getElementsByTagName("tr");
-	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[0];
-	    if (td) {
-	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-	        tr[i].style.display = "";
-	      } else {
-	        tr[i].style.display = "none";
-	      }
-	    } 
+	  var charCode = (evt.which) ? evt.which : event.keyCode
+
+	  if(charCode != 13)
+	  {
+	    
+	    input = document.getElementById("busca");
+	    filter = input.value.toUpperCase();
+	    table = document.getElementById("lista");
+	    tr = table.getElementsByTagName("tr");
+	    for (i = 0; i < tr.length; i++) {
+	      td = tr[i].getElementsByTagName("td")[0];
+	      if (td) {
+	        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	          tr[i].style.display = "";
+	        } else {
+	          tr[i].style.display = "none";
+	        }
+	      } 
+	    }
+	  } else {
+	  	return false;
 	  }
 	}
 
@@ -151,7 +159,7 @@
 					<h1> Selecionar jogadores iniciais</h1>
 					<div class="input-group col-md-6">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-						<input  type="text" onkeypress="pesquisa()" name="busca" id="busca">
+						<input  type="text" onkeypress="return pesquisa(event)" name="busca" id="busca">
 					</div>
 				</div>
 				<div class="col-md-10" style="height: 300px; overflow: auto;">
@@ -180,8 +188,8 @@
 							?>
 						</tbody>
 					</table>
-					<button type="submit" class="btn btn-success"  name="calcula_torneio" href='administrativo.php?link=45'" >Iniciar</button>
 				</div>
+				<button type="submit" class="btn btn-success"  name="calcula_torneio" href='administrativo.php?link=45'" >Iniciar</button>
 			</form>
 		</div>	
 	</div>
