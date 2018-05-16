@@ -20,7 +20,7 @@ include_once("conexao.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Página Administrativa">
-    <meta name="author" content="Cesar">
+    <meta name="author" content="Ikeda">
     <link rel="icon" href="imagens/favicon.ico">
     <meta rel="">
     <title>Administrativo</title>
@@ -94,11 +94,15 @@ include_once("conexao.php");
 		$pag[44] = "abertura_torneio.php";
 		$pag[45] = "proc_calcula_torneio.php";
 		$pag[46] = "visual_torneio.php";
-		$pag[47] = "manipula_torneio_aberto";
+		$pag[47] = "manipula_torneio_aberto.php";
 		$pag[50] = "listar_vendas.php";
 		$pag[51] = "listar_datatable.php";
 		$pag[52] = "editar_vendas.php";
 		$pag[53] = "visual_vendas.php";
+		$pag[54] = "finalizar_vendas.php";
+		$pag[55] = "listar_metodo_pgto.php";
+		$pag[56] = "editar_metodo_pgto.php";
+		$pag[57] = "cad_metodo_pagamento.php";
 
 		if(!empty($link)){
 			if(file_exists($pag[$link])){

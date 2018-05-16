@@ -1,14 +1,6 @@
 ﻿<?php
-
 session_start();
-/*
-if(isset($_SESSION['usuarioNome'])){
-	$usuario_logado=$_SESSION['usuarioNome'];
-}else{
-	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
-	die();
-}
-*/
+//include_once("../seguranca.php");
 include_once("../conexao.php");
 $flg_ranking 		= $_POST["flg_ranking"];
 $tipo_torneio 		= $_POST["tipo_torneio"];
@@ -18,7 +10,8 @@ $nome_torneio 		= $_POST["nome_torneio"];
 
 
 
-$query = mysqli_query($conectar,"INSERT INTO cadastro_torneio ( flg_ranking , tipo_torneio, peso_torneio, nome_torneio,situacao_id) VALUES ($flg_ranking , $tipo_torneio, $peso,'$nome_torneio', '1')");
+$query = mysqli_query($conectar,"INSERT INTO cadastro_torneio ( flg_ranking , tipo_torneio, peso_torneio, nome_torneio) VALUES ($flg_ranking , $tipo_torneio, $peso, '$nome_torneio')");
+
 
 
 ?>

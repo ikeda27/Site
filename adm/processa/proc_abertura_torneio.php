@@ -1,13 +1,6 @@
 ﻿<?php
-/*
-if(isset($_SESSION['usuarioNome'])){
-	$usuario_logado=$_SESSION['usuarioNome'];
-}else{
-	header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
-	die();
-}
-*/
 session_start();
+//include_once("../seguranca.php");
 include_once("../conexao.php");
 $cod_cad_torneio 	= $_POST["escolha_torneio"];
 $vlr_entrada		= $_POST["vlr_entrada"];

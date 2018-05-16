@@ -16,7 +16,7 @@ if(isset($_SESSION['usuarioNome'])){
 	</head>
 	
 	<?php
-include_once("../seguranca.php");
+//include_once("../seguranca.php");
 include_once("../conexao.php");
 $nome 				= $_POST["nome"];
 $descricao_curta 	= $_POST["descricao_curta"];

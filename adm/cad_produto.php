@@ -28,6 +28,8 @@ if(isset($_SESSION['usuarioNome'])){
 			    return false;
 			};
 
+
+
 			window.onload=function() {
 			    document.getElementById('form_produto').onsubmit=function() {
 			    
@@ -76,14 +78,14 @@ if(isset($_SESSION['usuarioNome'])){
 		  <div class="form-group" id="desc_curta">
 			<label for="inputEmail3" class="col-sm-2 control-label">Descrição Curta</label>
 			<div class="col-sm-10">
-				<textarea class="form-control ckeditor" rows="5" name="descricao" placeholder="Descrição curta do produto. Exemplo: Refrigerante 2 Litros"></textarea>
+				<textarea class="form-control ckeditor" rows="5" name="descricao_curta" placeholder="Descrição curta do produto. Exemplo: Refrigerante 2 Litros"></textarea>
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Preço</label>
 			<div class="col-sm-10">
-			  <input type="number" min='1' step='0.01' max='10000.00' class="form-control" name="preco" placeholder="Preço">
+			  <input type="text" class="form-control" name="preco" id="dinheiro" placeholder="Preço">
 			</div>
 		  </div>
 		  
@@ -97,7 +99,7 @@ if(isset($_SESSION['usuarioNome'])){
 		  <div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Foto do Produto (Opcional)</label>
 				<div class="col-sm-10">
-					<input name="arquivo" type="file"/>	
+					<input name="arquivo" type="file" required/>	
 				</div>
 		  </div>
 		  

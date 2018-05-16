@@ -1,11 +1,5 @@
 
 <?php
-	if(isset($_SESSION['usuarioNome'])){
-		$usuario_logado=$_SESSION['usuarioNome'];
-	}else{
-		header("Location: http://".$_SERVER['HTTP_HOST']."/adm/index.php");
-		die();
-	}
 	include_once("conexao.php");
 	$resultado=mysqli_query($conectar,"SELECT * FROM cadastro_torneio WHERE situacao_id = 1 ORDER BY cod_cadastro_torneio");
 	$linhas=mysqli_num_rows($resultado);
