@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 /*
 if(isset($_SESSION['usuarioNome'])){
@@ -20,20 +20,20 @@ $documento 			= $_POST["documento"];
 $telefone 			= $_POST["telefone"];
 $plano 				= $_POST["plano"];
 $nascimento 		= $_POST["nascimento"];
+$cidade				= $_POST['cidade'];
 $cod_clube=$_SESSION['clube'];
 $erro=null;
 $tipo_erro=0;
 
 //insere variavel validações mysql
 
-$teste_nome = mysqli_query($conectar,"SELECT nome FROM usuarios WHERE cod_clube='$cod_clube' AND nome='$nome'");
-$result_nome = mysqli_num_rows($teste_nome);
 
-$teste_email = mysqli_query($conectar,"SELECT nome FROM usuarios WHERE cod_clube='$cod_clube' AND email='$email'");
+$teste_email = mysqli_query($conectar,"SELECT id, email FROM usuarios WHERE email='$email'");
 $result_email = mysqli_num_rows($teste_email);
 
-$teste_usuario = mysqli_query($conectar,"SELECT nome FROM usuarios WHERE cod_clube='$cod_clube' AND login='$usuario'");
-$result_usuario = mysqli_num_rows($teste_usuario);
+$teste_usuario = mysqli_query($conectar,"SELECT login FROM usuarios WHERE cod_clube='$cod_clube' AND login='$usuario'");
+$lnh_usuario = mysqli_num_rows($teste_usuario);
+$vlr_usuario = mysqli_fetch_array($teste_usuario);
 
 $teste_cpf = mysqli_query($conectar,"SELECT nome FROM usuarios WHERE cod_clube='$cod_clube' AND documento='$documento'");
 $result_cpf = mysqli_num_rows($teste_cpf);
@@ -45,18 +45,17 @@ $result_cel = mysqli_num_rows($teste_cel);
 
 //inicia testes de erro
 
-if ($result_nome<>0) {
-	$erro=true;
-	$tipo_erro=1;
-}
+//se retorno do teste feito pelo campo avaliado for maior que 1, ou menor ou o id for diferente
 
 
-elseif ($result_email<>0) {
+
+elseif ($result_email<1) {
 	$erro=true;
 	$tipo_erro=2;
-} 
+} */
 
-elseif ($result_usuario<>0) {
+if ($lnh_usuario<>0) {
+	
 	$erro=true;
 	$tipo_erro=3;
 }
@@ -84,7 +83,7 @@ else {
 
 if ($erro==false) {
 
-$query = mysqli_query($conectar,"UPDATE usuarios set nome ='$nome', email = '$email', login = '$usuario', senha = '$senha', nivel_acesso_id = '$nivel_de_acesso', endereco = '$endereco', documento = '$documento', telefone = '$telefone', plano = '$plano', nascimento = '$nascimento', modified = NOW () , cod_clube = '$cod_clube' WHERE id='$id'");
+$query = mysqli_query($conectar,"UPDATE usuarios set nome ='$nome', email = '$email', login = '$usuario', senha = '$senha', nivel_acesso_id = '$nivel_de_acesso', endereco = '$endereco', documento = '$documento', telefone = '$telefone', plano = '$plano', nascimento = '$nascimento', modified = NOW () , cod_clube = '$cod_clube', cidade = '$cidade' WHERE id='$id'");
 
 }
 	

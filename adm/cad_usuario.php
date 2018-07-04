@@ -124,35 +124,35 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="nome" placeholder="Nome Completo" tabindex="0">
+			  <input type="text" class="form-control" name="nome" placeholder="Nome Completo" tabindex="0" required>
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
 			<div class="col-sm-10">
-			  <input type="email" class="form-control" name="email" placeholder="E-mail" tabindex="1">
+			  <input type="email" class="form-control" name="email" placeholder="E-mail" tabindex="1" required>
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Usuário</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="usuario" placeholder="Usuário" tabindex="2">
+			  <input type="text" class="form-control" name="usuario" placeholder="Usuário" tabindex="2" required>
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputPassword3" class="col-sm-2 control-label">Senha</label>
 			<div class="col-sm-10">
-			  <input type="password" class="form-control" name="senha" placeholder="Senha" tabindex="3">
+			  <input type="password" class="form-control" name="senha" placeholder="Senha" tabindex="3" required>
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputPassword3" class="col-sm-2 control-label">Nivel de Acesso</label>
 			<div class="col-sm-10">
-			  <select class="form-control" name="nivel_de_acesso">
+			  <select class="form-control" name="nivel_de_acesso" tabindex="4" required>
 				  <option value="1">Administrativo</option>
 				  <option value="2">Usuário</option>
 				</select>
@@ -162,14 +162,14 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputEndereco" class="col-sm-2 control-label">Endereço</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="endereco" placeholder="Endereco" tabindex="4">
+			  <input type="text" class="form-control" name="endereco" placeholder="Endereco" tabindex="5">
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputDocumento" class="col-sm-2 control-label">Documento</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="documento" placeholder="CPF" id="cpf" tabindex="5">
+			  <input type="text" class="form-control" name="documento" placeholder="CPF" id="cpf" tabindex="6">
 			</div>
 		  </div>
 		  
@@ -177,41 +177,52 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputTelefone" class="col-sm-2 control-label">Celular</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="telefone" placeholder="Celular" id="tel" tabindex="6">
+			  <input type="text" class="form-control" name="telefone" placeholder="Celular" id="tel" tabindex="7">
 			</div>
 		  </div>
 		  
 		  
-		   <div class="form-group">
+		  <input type="hidden" class="form-control" name="nivel_plano" value="1">
+		<!--  
+		 <div class="form-group">
 			<label for="nivel_plano" class="col-sm-2 control-label">Plano</label>
 			<div class="col-sm-10">
 			  <select class="form-control" name="nivel_plano">
 			  <?php
-
+/*
 			  while ($resultado = mysqli_fetch_array($result)) {
 			  	
 		  	echo "<option value='".$resultado['id_plano']."'>".$resultado['desc_plano']."</option>";
 		  } 
 
-			  ?>
+			  */?>
 				</select>
 			</div>
 		  </div>
+		  -->
 		  
 		  <!-- incluir padrão formatação de moeda -->
 		  <div class="form-group">
 			<label for="inputSaldo" class="col-sm-2 control-label">Saldo</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="saldo" placeholder="Saldo" id="dinheiro" tabindex="7">
+			  <input type="text" class="form-control" name="saldo" placeholder="Saldo" id="dinheiro" tabindex="9">
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputNasc" class="col-sm-2 control-label">Data Nascimento</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="nascimento" placeholder="Nascimento" id="data" tabindex="8">
+			  <input type="text" class="form-control" name="nascimento" placeholder="Nascimento" id="data" tabindex="10">
 			</div>
 		  </div>
+
+		  <div class="form-group">
+			<label for="inputCida" class="col-sm-2 control-label">Cidade</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" name="cidade" placeholder="Cidade" id="cidade" tabindex="10">
+			</div>
+		  </div>
+
 		  
 		  <div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">

@@ -117,7 +117,7 @@ if(isset($_SESSION['usuarioNome'])){
 					};
 
 
-					function post() {
+					function valida_post() {
 					    var erro_qtd_prod = 0;
 					    var form = $('<form></form>');
 

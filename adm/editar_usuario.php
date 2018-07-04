@@ -34,7 +34,6 @@ throw new Error("Your browser doesn't support event listeners.");
 }
 
 
-
 function iniciarMudancaDeEnterPorTab() {
  var i, j, form, element;
  for (i = 0; i < document.forms.length; i++) {
@@ -126,6 +125,12 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
   <div class="row">
 	<div class="col-md-12">
 	  <form class="form-horizontal" method="POST" action="processa/proc_edit_usuario.php">
+
+		  <div class="form-group" hidden="true">
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" name="id" required placeholder="Nome Completo" value="<?php echo $resultado['id']; ?>">
+			</div>
+		  </div>
 	  
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
@@ -144,9 +149,9 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Usuário</label>
 			<div class="col-sm-10">
-			  <input type="text" tabindex="2" class="form-control" name="usuario" required placeholder="Usuário" value="<?php echo $resultado['login']; ?>">
+			  <input type="text" tabindex="2" class="form-control" id="usuario" name="usuario" required placeholder="Usuário" value="<?php echo $resultado['login']; ?>">
 			</div>
-		  </div>
+		  </div>	
 		  
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Endereço</label>
@@ -221,6 +226,14 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 				</select>
 			</div>
 		  </div>
+
+		  <div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Cidade</label>
+			<div class="col-sm-10">
+			  <input type="text" tabindex="3" class="form-control" name="cidade" placeholder="cidade" value="<?php echo $resultado['cidade']; ?>">
+			</div>
+		  </div>
+
 		  
 		  <input type="hidden" name="id" value="<?php echo $resultado['id']; ?>">
 		  <div class="form-group">
@@ -233,3 +246,5 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 	</div>
 </div> <!-- /container -->
 
+<script src="js/principal.js"></script>
+ 

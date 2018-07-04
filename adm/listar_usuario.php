@@ -40,7 +40,35 @@ if(isset($_SESSION['usuarioNome'])){
 	</div>
   <div class="row">
 	<div class="col-md-12">
-	  <table class="table">
+		<table class="table">
+	  		<tr>
+	  			<td>
+					<input id="ck_inativa" type="checkbox" onchange="inativos()" checked="">
+						Exibir Inativos
+				</td>
+	  				<script type="text/javascript">
+				    	checkbox = document.getElementById("ck_inativa");
+				    	linhas = document.getElementsByClassName('linha_usuario');
+					
+						function inativos(){
+							for(var i=0, n=linhas.length;i<n;i++) {
+								var str = linhas[i].textContent;
+							    var patt = new RegExp("Desativado");
+							    var res = patt.test(str);
+
+							    if(checkbox.checked){
+							    	linhas[i].style.display = 'table-row';
+							    }else{
+								    if (res) {
+								    	linhas[i].style.display = 'none';
+								    }
+							   }
+							}
+						};
+					</script>
+			</tr>
+		</table>
+	<table class="table">
 		<thead>
 		  <tr>
 			<th>ID</th>
@@ -48,19 +76,27 @@ if(isset($_SESSION['usuarioNome'])){
 			<th>E-mail</th>
 			<th>Nivel de Acesso</th>
 			<th>Ativo</th>
+			<th>Cidade</th>
 			<th>Ações</th>
 			 
 		  </tr>
 		</thead>
 		<tbody>
 			<?php 
+				$ativo = ""; 
 				while($linhas = mysqli_fetch_array($resultado)){
-					echo "<tr>";
-						echo "<td>".$linhas['id']."</td>";
-						echo "<td>".$linhas['nome']."</td>";
-						echo "<td>".$linhas['email']."</td>";
-						echo "<td>".$linhas['nome_nivel']."</td>";
-						echo "<td>".$linhas['flag_user_ativo']."</td>";
+					if ($linhas['flag_user_ativo'] > 0){
+						$ativo = 'Ativado';
+					}else{
+						$ativo = 'Desativado';
+					}
+					echo "<tr class='linha_usuario' display='none'>";
+						echo "<td id='id'>".$linhas['id']."</td>";
+						echo "<td id='nome'>".$linhas['nome']."</td>";
+						echo "<td id='email'>".$linhas['email']."</td>";
+						echo "<td id='nome_nivel'>".$linhas['nome_nivel']."</td>";
+						echo "<td id='flag_user_ativo'>".$ativo."</td>";
+						echo "<td id='cidade'>".$linhas['cidade']."</td>";
 						?>
 						<td> 
 						<a href='administrativo.php?link=5&id=<?php echo $linhas['id']; ?>'><button type='button' class='btn btn-sm btn-primary'>Visualizar</button></a>

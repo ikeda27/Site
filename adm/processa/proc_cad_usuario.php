@@ -21,6 +21,7 @@ $nivel_de_acesso 	= $_POST["nivel_de_acesso"];
 $nivel_plano 		= $_POST["nivel_plano"];
 $saldo			 	= $_POST["saldo"];
 $nascimento 		= $_POST["nascimento"];
+$cidade      		= $_POST["cidade"];
 
 $cod_clube 			= 1;
 if (isset($_SESSION['clube'])){
@@ -90,7 +91,7 @@ else {
 
 if ($erro==false) {
 
-	$query = mysqli_query($conectar,"INSERT INTO usuarios (nome, email, login, senha, nivel_acesso_id, created, modified, endereco, documento, telefone, plano, saldo, nascimento, flag_user_ativo, cod_clube) VALUES ('$nome', '$email', '$usuario', '$senha', '$nivel_de_acesso', NOW(), NOW(), '$endereco', '$documento', '$telefone', '$nivel_plano', '$saldo', '$nascimento','1','$cod_clube')");
+	$query = mysqli_query($conectar,"INSERT INTO usuarios (nome, email, login, senha, nivel_acesso_id, created, modified, endereco, documento, telefone, plano, saldo, nascimento, flag_user_ativo, cod_clube, cidade) VALUES ('$nome', '$email', '$usuario', '$senha', '$nivel_de_acesso', NOW(), NOW(), '$endereco', '$documento', '$telefone', '$nivel_plano', '$saldo', '$nascimento','1','$cod_clube','$cidade')");
 }
 	
 	?>
