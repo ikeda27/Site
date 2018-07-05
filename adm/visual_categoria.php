@@ -37,24 +37,10 @@
 			</div>
 			
 			<div class="col-sm-3 col-md-1">
-				<b>Nome da Categoria:</b>
+				<b>Nome:</b>
 			</div>
 			<div class="col-sm-9 col-md-11">
 				<?php echo $resultado['nome']; ?>
-			</div>
-			
-			<div class="col-sm-3 col-md-1">
-				<b>Slug:</b>
-			</div>
-			<div class="col-sm-9 col-md-11">
-				<?php echo $resultado['slug']; ?>
-			</div>
-			
-			<div class="col-sm-3 col-md-1">
-				<b>Palavra chave:</b>
-			</div>
-			<div class="col-sm-9 col-md-11">
-				<?php echo $resultado['tag']; ?>
 			</div>
 			
 			<div class="col-sm-3 col-md-1">

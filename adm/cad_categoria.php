@@ -122,28 +122,18 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 			</div>
 		  </div>
 		  
-		  <div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Slug</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="slug" placeholder="Nome da categoria tudo minúsculo" tabindex="1">
-			</div>
-		  </div>
-		  
-		  <div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Palavra chave</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="tag" placeholder="Palavra chave" tabindex="2">
-			</div>
-		  </div>
-		  
+		
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Descrição</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="description" placeholder="Máximo 180 letras" tabindex="3">
+			  <input type="text" class="form-control" name="description" placeholder="Máximo 180 letras" tabindex="1">
 			</div>
 		  </div>
 		  
-		  
+		  <input type="hidden" class="form-control" name="slug" placeholder="Nome da categoria tudo minúsculo" value="-">
+		
+		  <input type="hidden" class="form-control" name="tag" placeholder="Palavra chave" value="-">
+
 		  <div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 			  <button type="submit" class="btn btn-success">Cadastrar</button>

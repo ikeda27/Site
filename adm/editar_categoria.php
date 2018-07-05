@@ -129,28 +129,18 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 			  <input type="text" tabindex="0" class="form-control" name="nome" placeholder="Nome Completo" value="<?php echo $resultado['nome']; ?>">
 			</div>
 		  </div>		 
-
-			<div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Slug</label>
-			<div class="col-sm-10">
-			  <input type="text" tabindex="1" class="form-control" name="slug" placeholder="Nome da categoria tudo minusculo" value="<?php echo $resultado['slug']; ?>">
-			</div>
-		  </div>
-		  
-		  <div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Palavra chave</label>
-			<div class="col-sm-10">
-			  <input type="text" tabindex="2" class="form-control" name="tag" placeholder="Palavra chave" value="<?php echo $resultado['tag']; ?>">
-			</div>
-		  </div>
-		  
+			
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Descrição máximo 180 letras</label>
 			<div class="col-sm-10">
-			  <input type="text" tabindex="3" class="form-control" name="description" placeholder="Descrição" value="<?php echo $resultado['description']; ?>">
+			  <input type="text" tabindex="1" class="form-control" name="description" placeholder="Descrição" value="<?php echo $resultado['description']; ?>">
 			</div>
 		  </div>
 		  
+		  <input type="hidden" class="form-control" name="slug" placeholder="Nome da categoria tudo minusculo" value="<?php echo $resultado['slug']; ?>">
+		
+		  <input type="hidden" class="form-control" name="tag" placeholder="Palavra chave" value="<?php echo $resultado['tag']; ?>">
+
 		  <input type="hidden" name="id" value="<?php echo $resultado['id']; ?>">
 		  <div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
