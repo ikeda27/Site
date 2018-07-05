@@ -149,7 +149,7 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Usuário</label>
 			<div class="col-sm-10">
-			  <input type="text" tabindex="2" class="form-control" id="usuario" name="usuario" required placeholder="Usuário" value="<?php echo $resultado['login']; ?>">
+			  <input type="text" tabindex="2" class="form-control" id="usuario" name="usuario" required placeholder="Usuário" value="<?php echo $resultado['login']; ?>" >
 			</div>
 		  </div>	
 		  
