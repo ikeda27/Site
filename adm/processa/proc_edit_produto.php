@@ -94,7 +94,8 @@ if($arquivo == ""){
 	}
 	
 	//Faz a verificação da extensao do arquivo
-	$extensao = strtolower(end(explode('.', $_FILES['arquivo']['name'])));
+	$name_file=explode('.', $_FILES['arquivo']['name']);
+	$extensao = strtolower(end($name_file));
 	if(array_search($extensao, $_UP['extensoes'])=== false){
 		$query = mysqli_query($conectar,"UPDATE produtos SET
 		nome			='$nome',
@@ -161,7 +162,7 @@ if($arquivo == ""){
 
 	else{
 		//Primeiro verifica se deve trocar o nome do arquivo
-		if($UP['renomeia'] == true){
+		if($_UP['renomeia'] == true){
 			//Cria um nome baseado no UNIX TIMESTAMP atual e com extensão .jpg
 			$nome_final = time().'.jpg';
 		}else{

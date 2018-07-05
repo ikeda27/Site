@@ -58,7 +58,10 @@ if($_FILES['arquivo']['error'] != 0){
 }
 
 //Faz a verificação da extensao do arquivo
-$extensao = strtolower(end(explode('.', $arquivo)));
+//$extensao = strtolower(end(explode('.', $arquivo)));
+$name_file=explode('.', $arquivo);
+$extensao = strtolower(end($name_file));
+
 if(array_search($extensao, $_UP['extensoes'])=== false){
 	$query = mysqli_query($conectar,"INSERT INTO produtos (
 	categoria_id, 
