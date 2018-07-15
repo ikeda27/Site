@@ -10,10 +10,29 @@ if(isset($_SESSION['usuarioNome'])){
 session_start();
 include_once("../conexao.php");
 $id 				= $_GET["id"];
+$ativ_inativ		= 0;
 
-$query = "DELETE FROM categorias WHERE id=$id";
-$resultado = mysqli_query($conectar,$query);
-$linhas = mysqli_affected_rows($conectar);
+if(isset($_GET["inativ"])){$ativ_inativ = $_GET["inativ"];}
+$ativ = 0;
+$msg = "";
+
+if ($ativ_inativ > 0) {
+	$pre_query = "SELECT id, tag FROM categorias WHERE id=$id";
+	$pre_resultado = mysqli_query($conectar,$pre_query);
+	
+	while($pre_linhas = mysqli_fetch_array($pre_resultado)){
+		if ($pre_linhas['tag'] == '0' ){ $ativ = 1; $msg = "ativada"; } else { $ativ = 0; $msg = "desativada"; }
+	}
+
+	$query = "UPDATE categorias set tag = '$ativ' WHERE id=$id";
+
+} else { 
+	$query = "DELETE FROM categorias WHERE id=$id";
+	$msg = "apagado";
+}
+
+	$resultado = mysqli_query($conectar,$query);
+	$linhas = mysqli_affected_rows($conectar);
 
 ?>
 <!DOCTYPE html>
@@ -28,7 +47,7 @@ $linhas = mysqli_affected_rows($conectar);
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=7'>
 				<script type=\"text/javascript\">
-					alert(\"Categoria de produto apagado com Sucesso.\");
+					alert(\"Categoria de produto ".$msg." com Sucesso.\");
 				</script>
 			";		   
 		}
@@ -36,7 +55,7 @@ $linhas = mysqli_affected_rows($conectar);
 				echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://".$_SERVER['HTTP_HOST']."/adm/administrativo.php?link=7'>
 				<script type=\"text/javascript\">
-					alert(\"Categoria de produto não foi apagado com Sucesso.\");
+					alert(\"Categoria de produto não foi ".$msg." com Sucesso.\");
 				</script>
 			";		   
 

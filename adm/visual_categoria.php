@@ -23,7 +23,7 @@
 							
 			<a href='administrativo.php?link=9&id=<?php echo $resultado['id']; ?>'><button type='button' class='btn btn-sm btn-warning'>Editar</button></a>
 			
-			<a href='processa/proc_apagar_cat_prod.php?id=<?php echo $resultado['id']; ?>'><button type='button' class='btn btn-sm btn-danger'>Apagar</button></a>
+			<!--<a href='processa/proc_apagar_cat_prod.php?id=<?php echo $resultado['id']; ?>'><button type='button' class='btn btn-sm btn-danger'>Apagar</button></a> -->
 		</div>
 	</div>
 	

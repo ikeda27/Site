@@ -11,10 +11,9 @@ if(isset($_SESSION['usuarioNome'])){
 include_once("../conexao.php");
 $nome 				= $_POST["nome"];
 $slug 				= $_POST["slug"];
-$tag 				= $_POST["tag"];
 $description 		= $_POST["description"];
 
-$query = mysqli_query($conectar,"INSERT INTO categorias (nome, slug, tag, description, created) VALUES ('$nome', '$slug', '$tag', '$description', NOW())");
+$query = mysqli_query($conectar,"INSERT INTO categorias (nome, slug, tag, description, created) VALUES ('$nome', '$slug', '1', '$description', NOW())");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

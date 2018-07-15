@@ -65,15 +65,50 @@ if(isset($_SESSION['usuarioNome'])){
 						echo "<td>".$resultado_sit['nome']."</td>";
 						?>
 						<td> 
-						<a href='administrativo.php?link=12&id=<?php echo $linhas['id']; ?>'><button type='button' class='btn btn-sm btn-primary'>Visualizar</button></a>
-						
-						<a href='administrativo.php?link=13&id=<?php echo $linhas['id']; ?>'><button type='button' class='btn btn-sm btn-warning'>Editar</button></a>
-						
-						<a href='processa/proc_apagar_produto.php?id=<?php echo $linhas['id']; ?>'><button type='button' class='btn btn-sm btn-danger'>Apagar</button></a>
-						
+						<a href='administrativo.php?link=12&id=<?php echo $linhas['id']; ?>'><button type='button' class='btn btn-sm btn-success'>Visualizar</button></a>&nbsp;&nbsp;
+						<a href='administrativo.php?link=13&id=<?php echo $linhas['id']; ?>'><button type='button' class='btn btn-sm btn-primary'>Editar</button></a>
+						&nbsp;
+						<a href='processa/proc_apagar_produto.php?id=<?php echo $linhas['id']; ?>&inativ=1'><button type='button' class='btn btn-sm btn-warning'>
+						<?php
+							if ($resultado_sit['nome'] == "Ativado") {echo "Desativar";} else {echo "&nbsp;Reativar&nbsp;";}
+						?>
+						</button></a>
+
+						<form method='post' class='btn btn-sm'> 
+						<input type='submit' class='btn btn-sm btn-danger' id='enviar' name='enviar' value="Apagar">
+						<input type='hidden' id='apagar_teste' name='apagar_teste' value="<?php echo $linhas['id'] ?>"></form>
+						</td>
+						<!--
+						<a href='processa/proc_apagar_produto.php?id=<?php #echo $linhas['id']; ?>'><button type='button' class='btn btn-sm btn-danger'>Apagar</button></a>
+						-->
+
 						<?php
 					echo "</tr>";
 				}
+					if(array_key_exists('apagar_teste',$_POST)){
+					   $resultado_valida=mysqli_query($conectar,"SELECT venda_dados.cod_produto FROM vendas 
+					         INNER JOIN venda_dados ON vendas.cod_venda = venda_dados.cod_venda INNER JOIN produtos ON produtos.id = venda_dados.cod_produto 
+					         WHERE vendas.cod_clube ='".$_SESSION['clube']."' GROUP BY venda_dados.cod_produto");
+
+					   $id_produto = $_POST['apagar_teste'];
+					   $manter = 0;
+
+					   while($detalhes_valida = mysqli_fetch_array($resultado_valida)){
+							if($detalhes_valida['cod_produto'] == $id_produto){
+								$manter = $manter + 1;
+							}
+					    }
+
+					   if ($manter > 0) {
+					   	  # POSSUI VENDA, CENÁRIO 1 - ABORTAR EXCLUSÃO
+					   	  echo "<script>alert('Produto possui venda vinculada, abortando exclusão!');</script>";
+					   }else{
+
+						  	 # NÃO POSSUI VENDA NEM PRODUTO, CENÁRIO 2 - PERMITIR A EXCLUSÃO
+						  	 header("Location: ".'http://'.$_SERVER['HTTP_HOST']."/adm/processa/proc_apagar_produto.php?id=".$id_produto);
+						  	 exit;
+					  	  } 
+					   } 
 			?>
 		</tbody>
 	  </table>

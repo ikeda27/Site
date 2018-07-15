@@ -115,8 +115,9 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
   <div class="row espaco">
 		<div class="pull-right">
 			<a href='administrativo.php?link=7'><button type='button' class='btn btn-sm btn-info'>Listar</button></a>
-			
+			<!--
 			<a href='processa/proc_apagar_cat_prod.php?id=<?php echo $resultado['id']; ?>'><button type='button' class='btn btn-sm btn-danger'>Apagar</button></a>
+		-->
 		</div>
 	</div>
   <div class="row">

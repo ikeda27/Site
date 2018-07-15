@@ -62,7 +62,7 @@ if(isset($_SESSION['usuarioNome'])){
 					alert("Há pendências no produto, revise por favor!");
 					return false;
 				}else{
-					alert("tudo ok!");
+					//alert("tudo ok!");
 					return true;
 				}
 			  }
