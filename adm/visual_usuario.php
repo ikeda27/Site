@@ -113,6 +113,22 @@
 				<?php  if(empty($resultado['saldo'])) echo "-"; else echo $resultado['saldo']; ?>
 			</div>
 			
+			<div class="col-sm-3 col-md-2">
+				<b>Ativo:</b>
+			</div>
+			<div class="col-sm-9 col-md-10">
+				<?php
+					if (isset($resultado['flag_user_ativo'])){
+						if ($resultado['flag_user_ativo'] > 0){
+							echo "Ativado";
+						}else{
+							echo "Desativado";
+						}
+					}else{
+						echo "-";
+					}
+				?>
+			</div>
 			
 		</div>
 	</div>

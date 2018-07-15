@@ -109,8 +109,9 @@ return false;
 addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 
 </script>
+
+
 <div class="container theme-showcase" role="main">      
-  
 
   <div class="page-header">
 	<h1>Editar Usuário</h1>
@@ -142,7 +143,7 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
 			<div class="col-sm-10">
-			  <input type="email" tabindex="1" class="form-control" name="email" required placeholder="E-mail" value="<?php echo $resultado['email']; ?>">
+			  <input type="email" tabindex="1" class="form-control" id="email" name="email" required placeholder="E-mail" value="<?php echo $resultado['email']; ?>">
 			</div>
 		  </div>
 		  
@@ -156,14 +157,14 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Endereço</label>
 			<div class="col-sm-10">
-			  <input type="text" tabindex="3" class="form-control" name="endereco" placeholder="endereco" value="<?php echo $resultado['endereco']; ?>">
+			  <input type="text" tabindex="3" class="form-control" id="endereco" name="endereco" placeholder="endereco" value="<?php echo $resultado['endereco']; ?>">
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Documento</label>
+			<label for="inputEmail3" class="col-sm-2 control-label">RG</label>
 			<div class="col-sm-10">
-			  <input type="text" tabindex="4" class="form-control" required name="documento" id="cpf" placeholder="documento" value="<?php echo $resultado['documento']; ?>">
+			  <input type="text" tabindex="4" class="form-control" required id="documento" name="documento" id="cpf" placeholder="documento" value="<?php echo $resultado['documento']; ?>">
 			</div>
 		  </div>
 		  
@@ -230,7 +231,7 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Cidade</label>
 			<div class="col-sm-10">
-			  <input type="text" tabindex="3" class="form-control" name="cidade" placeholder="cidade" value="<?php echo $resultado['cidade']; ?>">
+			  <input type="text" tabindex="10" class="form-control" name="cidade" placeholder="cidade" value="<?php echo $resultado['cidade']; ?>">
 			</div>
 		  </div>
 
