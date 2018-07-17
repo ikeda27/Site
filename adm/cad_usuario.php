@@ -131,21 +131,21 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
 			<div class="col-sm-10">
-			  <input type="email" class="form-control" name="email" placeholder="E-mail" tabindex="1" required>
+			  <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" tabindex="1" required>
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Usuário</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="usuario" placeholder="Usuário" tabindex="2" required>
+			  <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Usuário" tabindex="2" required>
 			</div>
 		  </div>
 		  
 		  <div class="form-group">
 			<label for="inputPassword3" class="col-sm-2 control-label">Senha</label>
 			<div class="col-sm-10">
-			  <input type="password" class="form-control" name="senha" placeholder="Senha" tabindex="3" required>
+			  <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha" tabindex="3" required>
 			</div>
 		  </div>
 		  
@@ -169,7 +169,7 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputDocumento" class="col-sm-2 control-label">Documento</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" name="documento" placeholder="CPF" id="cpf" tabindex="6">
+			  <input type="text" class="form-control" name="documento" id="documento" placeholder="CPF" id="cpf" tabindex="6">
 			</div>
 		  </div>
 		  
@@ -234,3 +234,4 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 	</div>
 </div> <!-- /container -->
 
+<script src="js/principal.js"></script>

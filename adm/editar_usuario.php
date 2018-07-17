@@ -201,7 +201,7 @@ addEvent(window, "load", iniciarMudancaDeEnterPorTab);
 		  <div class="form-group">
 			<label for="inputPassword3" class="col-sm-2 control-label">Senha</label>
 			<div class="col-sm-10">
-			  <input type="password" tabindex="8" class="form-control" required name="senha" placeholder="Senha">
+			  <input type="password" tabindex="8" class="form-control" required name="senha" id="senha" placeholder="Senha">
 			</div>
 		  </div>
 		  
